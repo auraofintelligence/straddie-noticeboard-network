@@ -13,6 +13,19 @@
     return node;
   }
 
+  function renderSharedQuestions() {
+    const mount = document.querySelector('[data-category-questions]');
+    if (!mount) return;
+    [
+      'Who inside this entity can approve a public notice?',
+      'Which fields can be public, and which must stay private?',
+      'What expiry date or review rhythm should this notice use?',
+      'Which screen shapes matter: wall, kiosk, phone, counter tablet or text fallback?',
+      "Who owns this entity's public_noticeboard.md contract?",
+      'Which monthly, seasonal, local or UN-style themes align with this entity?'
+    ].forEach((question) => mount.appendChild(make('li', '', question)));
+  }
+
   function exampleMarkdown(entity, group) {
     const id = slugify(entity.name) + '-notice-draft';
     return '---\n' +
@@ -46,20 +59,11 @@
     card.appendChild(make('p', 'card-meta', entity.place));
     card.appendChild(make('p', '', 'Supposed public data: ' + entity.share));
 
-    const questions = make('ul', 'question-list');
-    [
-      'Who inside this entity can approve a public notice?',
-      'Which fields can be public, and which must stay private?',
-      'What expiry date or review rhythm should this notice use?',
-      'Which screen shapes matter: wall, kiosk, phone, counter tablet or text fallback?',
-      "Who owns this entity's public_noticeboard.md contract?",
-      'Which monthly, seasonal, local or UN-style themes align with this entity?'
-    ].forEach((question) => questions.appendChild(make('li', '', question)));
-    card.appendChild(questions);
-
     const pre = make('pre', 'entity-md');
     pre.appendChild(make('code', '', exampleMarkdown(entity, group)));
     card.appendChild(pre);
     mount.appendChild(card);
   });
+
+  renderSharedQuestions();
 })();

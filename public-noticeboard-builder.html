@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Build and export a public_noticeboard.md file for the Straddie Noticeboard Network.">
+    <title>Build public_noticeboard.md | Straddie Noticeboard Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="categories/index.html">Categories</a>
+          <a href="entities.html">Entities</a>
+          <a href="public-noticeboard.html">public_noticeboard.md</a>
+          <a href="noticeboard/public_noticeboard.md">Starter file</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="category-hero">
+        <p class="eyebrow">Builder</p>
+        <h1>Create<br>noticeboard<br>file</h1>
+        <p class="hero-lede">Answer the prompts, edit the generated public_noticeboard.md if needed, then copy or download the file. Answers stay in this browser unless you export them.</p>
+      </section>
+      <section class="section builder-layout">
+        <form class="builder-form" data-public-noticeboard-form>
+          <fieldset>
+            <legend>Publisher identity</legend>
+            <label>Publisher name <input name="publisher_name" placeholder="Point Lookout Fishing Club"></label>
+            <label>Publisher type <input name="publisher_type" placeholder="club, artist, cafe, service, event, device_location"></label>
+            <label>Public profile path <input name="public_profile" placeholder="profiles/plfc/profile.md"></label>
+            <label>Approval owner <input name="approval_owner" placeholder="secretary, owner, media coordinator"></label>
+          </fieldset>
+          <fieldset>
+            <legend>Devices and screens</legend>
+            <label>Device location IDs <textarea name="device_location_ids" placeholder="plfc-wall-01&#10;point-lookout-counter-01"></textarea></label>
+            <label>Screen targets <textarea name="screen_targets" placeholder="wall_16x9&#10;kiosk_portrait&#10;phone_story"></textarea></label>
+            <label>Local asset pack <input name="asset_pack" placeholder="plfc/default"></label>
+          </fieldset>
+          <fieldset>
+            <legend>Themes and notice types</legend>
+            <label>Local themes <textarea name="local_themes" placeholder="junior-sport-week&#10;storm-and-fire-ready&#10;whale-season"></textarea></label>
+            <label>Global or UN-style themes <textarea name="global_themes" placeholder="world-water-day&#10;world-environment-day"></textarea></label>
+            <label>Allowed notice types <textarea name="allowed_notice_types" placeholder="event&#10;safety_note&#10;sponsor_thanks&#10;volunteer_call"></textarea></label>
+          </fieldset>
+          <fieldset>
+            <legend>Public content boundaries</legend>
+            <label>What we want to publish <textarea name="want_publish" placeholder="Competition dates&#10;Junior clinics&#10;Sponsor thanks"></textarea></label>
+            <label>Must not publish <textarea name="must_not_publish" placeholder="private member records&#10;exact fishing GPS&#10;private aura.md material"></textarea></label>
+            <label>Questions still needing real answers <textarea name="open_questions" placeholder="Who approves each notice type?&#10;Which devices should receive each notice?"></textarea></label>
+            <label>Review rhythm <input name="review_rhythm" placeholder="monthly"></label>
+          </fieldset>
+          <div class="builder-actions">
+            <button class="button primary" type="submit">Update markdown</button>
+            <button class="button secondary" type="button" data-copy-public-noticeboard>Copy markdown</button>
+            <button class="button secondary" type="button" data-download-public-noticeboard>Download public_noticeboard.md</button>
+            <button class="button danger" type="button" data-clear-public-noticeboard>Clear answers</button>
+          </div>
+          <p class="status" data-public-noticeboard-status aria-live="polite"></p>
+        </form>
+        <aside class="output-panel">
+          <label for="publicNoticeboardOutput">Generated markdown</label>
+          <textarea id="publicNoticeboardOutput" class="markdown-output" spellcheck="false" data-public-noticeboard-output></textarea>
+        </aside>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-copy"><p>Builder for public_noticeboard.md.</p><p class="footer-note">This is the public publishing layer. Do not paste private aura.md content into public screens.</p></div></footer>
+    <script src="public-noticeboard-builder.js"></script>
+  </body>
+</html>

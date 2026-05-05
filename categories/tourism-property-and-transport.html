@@ -15,7 +15,16 @@
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
         <a class="brand-mark" href="../index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
-        <div class="nav-links static-links"><a href="../index.html">Home</a><a href="index.html">Categories</a><a href="../entities.html">Entities</a><a href="../index.html#themes">Themes</a><a href="../public-noticeboard.html">public_noticeboard.md</a></div>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../categories/index.html">Categories</a>
+          <a href="../entities.html">Entities</a>
+          <a href="../index.html#themes">Themes</a>
+          <a href="../index.html#agents">Agents</a>
+          <a href="../public-noticeboard-builder.html">Builder</a>
+          <a href="../public-noticeboard.html">public_noticeboard.md</a>
+        </div>
       </nav>
     </header>
     <main id="main">
@@ -28,8 +37,13 @@
         <div class="section-heading">
           <p class="eyebrow">Entity cards</p>
           <h2>Example data and discovery questions.</h2>
-          <p>These cards show a starter markdown shape and the questions a Ready S.E.T. media agent should ask before any real notice goes public.</p>
+          <p>These cards show a starter markdown shape for each entity. The shared discovery questions sit once below, then apply across the whole category.</p>
         </div>
+        <aside class="question-panel">
+          <p class="eyebrow">Discovery questions</p>
+          <h3>Ask once, then apply to each entity.</h3>
+          <ul class="question-list" data-category-questions></ul>
+        </aside>
         <div class="entity-card-grid" data-category-cards></div>
       </section>
     </main>
