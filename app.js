@@ -9,17 +9,23 @@
   }
 
   function renderBasics() {
-    document.querySelector('[data-project-deck]').textContent = data.project.deck;
-    document.querySelector('[data-project-source]').textContent = 'Source brief: ' + data.project.source;
-    document.querySelector('[data-boundary]').textContent = data.project.boundary;
-    document.querySelector('[data-entity-count]').textContent = data.project.entityCount;
+    const deck = document.querySelector('[data-project-deck]');
+    const source = document.querySelector('[data-project-source]');
+    const boundary = document.querySelector('[data-boundary]');
+    const entityCount = document.querySelector('[data-entity-count]');
+    if (deck) deck.textContent = data.project.deck;
+    if (source) source.textContent = 'Source brief: ' + data.project.source;
+    if (boundary) boundary.textContent = data.project.boundary;
+    if (entityCount) entityCount.textContent = data.project.entityCount;
 
     const principles = document.querySelector('[data-principles]');
+    if (!principles) return;
     data.project.principles.forEach((item) => principles.appendChild(make('li', '', item)));
   }
 
   function renderPipeline() {
     const mount = document.querySelector('[data-pipeline]');
+    if (!mount) return;
     data.pipeline.forEach((step, index) => {
       const card = make('article', 'notice-step');
       card.appendChild(make('span', '', String(index + 1).padStart(2, '0')));
@@ -31,6 +37,7 @@
 
   function renderScreens() {
     const mount = document.querySelector('[data-screens]');
+    if (!mount) return;
     data.screenProfiles.forEach((screen) => {
       const card = make('article', 'screen-card');
       card.appendChild(make('h3', '', screen.name));
@@ -43,6 +50,7 @@
   function renderEntities() {
     const tabs = document.querySelector('[data-entity-tabs]');
     const detail = document.querySelector('[data-entity-detail]');
+    if (!tabs || !detail) return;
 
     data.entityGroups.forEach((group, index) => {
       const button = make('button', 'entity-tab', group.label);
@@ -76,6 +84,7 @@
 
   function renderCategoryPages() {
     const mount = document.querySelector('[data-category-pages]');
+    if (!mount) return;
     data.project.categoryPages.forEach((category) => {
       const card = make('article', 'category-card');
       card.appendChild(make('p', 'eyebrow', category.kind));
@@ -92,6 +101,7 @@
   function renderThemes() {
     const globalMount = document.querySelector('[data-theme-calendar]');
     const localMount = document.querySelector('[data-local-themes]');
+    if (!globalMount || !localMount) return;
 
     data.themeCalendar.forEach((theme) => {
       const card = make('article', 'theme-card');
@@ -118,6 +128,7 @@
 
   function renderAgents() {
     const mount = document.querySelector('[data-agent-pipelines]');
+    if (!mount) return;
     data.agentPipelines.forEach((agent) => {
       const card = make('article', 'agent-card');
       card.appendChild(make('p', 'eyebrow', agent.id));
@@ -139,6 +150,7 @@
 
   function renderDevices() {
     const mount = document.querySelector('[data-device-locations]');
+    if (!mount) return;
     data.deviceLocations.forEach((device) => {
       const card = make('article', 'device-card');
       card.appendChild(make('p', 'eyebrow', device.id));
@@ -151,6 +163,7 @@
 
   function renderMarkdown() {
     const mount = document.querySelector('[data-markdown-examples]');
+    if (!mount) return;
     data.markdownExamples.forEach((example) => {
       const card = make('article', 'md-card');
       card.appendChild(make('h3', '', example.title));
@@ -163,6 +176,7 @@
 
   function renderFiles() {
     const mount = document.querySelector('[data-file-grid]');
+    if (!mount) return;
     [...data.sampleFeeds, ...data.deviceManifests].forEach((file) => {
       const card = make('a', 'file-card', file);
       card.href = file;
@@ -173,6 +187,7 @@
   function wireNav() {
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
+    if (!toggle || !links) return;
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', String(open));

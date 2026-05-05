@@ -17,13 +17,13 @@
         <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
         <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
         <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="categories/index.html">Categories</a>
+          <a href="entities.html">Entities</a>
           <a href="#pipeline">Pipeline</a>
-          <a href="#screens">Screens</a>
           <a href="#themes">Themes</a>
-          <a href="#entities">Entities</a>
           <a href="#agents">Agents</a>
           <a href="public-noticeboard.html">public_noticeboard.md</a>
-          <a href="#markdown">Markdown</a>
         </div>
       </nav>
     </header>
@@ -35,7 +35,8 @@
           <p class="hero-lede" data-project-deck></p>
           <p class="source-line" data-project-source></p>
           <div class="hero-actions">
-            <a class="button primary" href="#entities">Explore publishers</a>
+            <a class="button primary" href="categories/index.html">Open categories</a>
+            <a class="button secondary" href="entities.html">Browse all entities</a>
             <a class="button secondary" href="public-noticeboard.html">Open public_noticeboard.md</a>
             <a class="button secondary" href="noticeboard/README.md">Open pipeline files</a>
           </div>
@@ -84,24 +85,6 @@
             <h3>Local prompts</h3>
             <div class="theme-grid compact" data-local-themes></div>
           </div>
-        </div>
-      </section>
-      <section class="section" id="entities" aria-labelledby="entities-title">
-        <div class="section-heading">
-          <p class="eyebrow">Category pages</p>
-          <h2 id="entities-title">Every category gets its own page.</h2>
-          <p><span data-entity-count></span> named entities are grouped from the research notes. Each category page contains one card per entity, with example markdown and questions to discover the real data.</p>
-        </div>
-        <div class="category-grid" data-category-pages></div>
-      </section>
-      <section class="section wide visual-band" id="entity-browser" aria-labelledby="entity-browser-title">
-        <div class="section-heading">
-          <p class="eyebrow">Quick browser</p>
-          <h2 id="entity-browser-title">Browse the live catalogue here too.</h2>
-        </div>
-        <div class="entity-browser">
-          <div class="entity-tabs" data-entity-tabs></div>
-          <article class="entity-detail" data-entity-detail></article>
         </div>
       </section>
       <section class="section" id="agents" aria-labelledby="agents-title">
