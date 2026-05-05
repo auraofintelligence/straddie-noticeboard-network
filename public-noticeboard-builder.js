@@ -218,7 +218,7 @@
     const hint = categoryHints[state.category];
     newCategoryField.classList.toggle("is-hidden", state.category !== "request-new-category");
     if (!hint) {
-      categoryHint.innerHTML = "<h3>Select a category for starter prompts.</h3><p>The builder will suggest what to ask next, without pretending the answers are already known.</p>";
+      categoryHint.innerHTML = "<h3>Category search notes will appear here.</h3><p>Select the closest category in Part A. This box will show common public data ideas and questions for that kind of entity.</p>";
       return;
     }
     categoryHint.innerHTML = "<h3>" + getCategoryLabel(state.category, state.requested_category) + "</h3><p>" + hint.focus + "</p><p class=\"hint-question\">" + hint.questions + "</p>";
