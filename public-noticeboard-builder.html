@@ -28,36 +28,108 @@
     <main id="main">
       <section class="category-hero">
         <p class="eyebrow">Builder</p>
-        <h1>Create<br>noticeboard<br>file</h1>
+        <h1>Create<br>notice<br>file</h1>
         <p class="hero-lede">Answer the prompts, edit the generated public_noticeboard.md if needed, then copy or download the file. Answers stay in this browser unless you export them.</p>
       </section>
       <section class="section builder-layout">
         <form class="builder-form" data-public-noticeboard-form>
           <fieldset>
-            <legend>Publisher identity</legend>
-            <label>Publisher name <input name="publisher_name" placeholder="Point Lookout Fishing Club"></label>
-            <label>Publisher type <input name="publisher_type" placeholder="club, artist, cafe, service, event, device_location"></label>
-            <label>Public profile path <input name="public_profile" placeholder="profiles/plfc/profile.md"></label>
-            <label>Approval owner <input name="approval_owner" placeholder="secretary, owner, media coordinator"></label>
+            <legend>Category and identity</legend>
+            <label>Category
+              <select name="category" data-category-select>
+                <option value="hospitality-and-retail">Hospitality and retail</option>
+                <option value="trades-and-services">Trades and services</option>
+                <option value="tourism-property-and-transport">Tourism, property and transport</option>
+                <option value="community-safety-and-sport">Community, safety and sport</option>
+                <option value="events">Events</option>
+                <option value="artists-and-creative-hubs">Artists and creative hubs</option>
+                <option value="request-new-category">Request a new category</option>
+              </select>
+            </label>
+            <label class="conditional-field is-hidden" data-new-category-field>Requested category <input name="requested_category" placeholder="e.g. health and care, schools, local food system"></label>
+            <label>Publisher name <input name="publisher_name" placeholder="Your entity name"></label>
+            <label>Publisher type
+              <select name="publisher_type" data-publisher-type-select></select>
+            </label>
+            <label>Public profile path <input name="public_profile" placeholder="profiles/entity-name/profile.md"></label>
+            <div class="field-group">
+              <p>Approval owner</p>
+              <div class="option-grid compact" data-radio-group="approval_owner">
+                <label><input type="radio" name="approval_owner" value="owner"> Owner</label>
+                <label><input type="radio" name="approval_owner" value="manager"> Manager</label>
+                <label><input type="radio" name="approval_owner" value="secretary"> Secretary</label>
+                <label><input type="radio" name="approval_owner" value="media_coordinator"> Media coordinator</label>
+                <label><input type="radio" name="approval_owner" value="committee"> Committee</label>
+                <label><input type="radio" name="approval_owner" value="other"> Other</label>
+              </div>
+              <label class="conditional-field is-hidden" data-approval-other-field>Other approval owner <input name="approval_owner_other" placeholder="Who signs off public notices?"></label>
+            </div>
           </fieldset>
           <fieldset>
             <legend>Devices and screens</legend>
-            <label>Device location IDs <textarea name="device_location_ids" placeholder="plfc-wall-01&#10;point-lookout-counter-01"></textarea></label>
-            <label>Screen targets <textarea name="screen_targets" placeholder="wall_16x9&#10;kiosk_portrait&#10;phone_story"></textarea></label>
-            <label>Local asset pack <input name="asset_pack" placeholder="plfc/default"></label>
+            <label>Device location IDs <textarea name="device_location_ids" placeholder="one-location-id-per-line&#10;point-lookout-counter-01&#10;dunwich-window-01"></textarea></label>
+            <div class="field-group">
+              <p>Screen targets</p>
+              <div class="option-grid compact" data-checkbox-group="screen_targets"></div>
+            </div>
+            <div class="field-group">
+              <p>Asset pack</p>
+              <div class="option-grid compact" data-radio-group="asset_pack_mode">
+                <label><input type="radio" name="asset_pack_mode" value="category_default"> Category default</label>
+                <label><input type="radio" name="asset_pack_mode" value="entity_custom"> Entity custom</label>
+                <label><input type="radio" name="asset_pack_mode" value="text_only"> Text-only fallback</label>
+              </div>
+              <label class="conditional-field is-hidden" data-asset-pack-custom-field>Custom asset pack path <input name="asset_pack_custom" placeholder="entity-name/default"></label>
+            </div>
           </fieldset>
           <fieldset>
             <legend>Themes and notice types</legend>
-            <label>Local themes <textarea name="local_themes" placeholder="junior-sport-week&#10;storm-and-fire-ready&#10;whale-season"></textarea></label>
-            <label>Global or UN-style themes <textarea name="global_themes" placeholder="world-water-day&#10;world-environment-day"></textarea></label>
-            <label>Allowed notice types <textarea name="allowed_notice_types" placeholder="event&#10;safety_note&#10;sponsor_thanks&#10;volunteer_call"></textarea></label>
+            <div class="field-group">
+              <p>Planning rhythm</p>
+              <div class="option-grid" data-radio-group="planning_mode">
+                <label><input type="radio" name="planning_mode" value="monthly_local_event"> Monthly planning around local events</label>
+                <label><input type="radio" name="planning_mode" value="local_seasonal"> Local seasonal cycle</label>
+                <label><input type="radio" name="planning_mode" value="un_global_themes"> UN/global observance themes</label>
+                <label><input type="radio" name="planning_mode" value="quarterly_mixed"> Quarterly mix of local and global themes</label>
+                <label><input type="radio" name="planning_mode" value="ad_hoc"> Ad hoc updates only</label>
+              </div>
+            </div>
+            <div class="field-group">
+              <p>Local themes</p>
+              <div class="option-grid" data-checkbox-group="local_themes"></div>
+            </div>
+            <div class="field-group">
+              <p>UN/global themes</p>
+              <div class="option-grid" data-checkbox-group="global_themes"></div>
+            </div>
+            <label>Custom themes <textarea name="custom_themes" placeholder="one extra theme per line"></textarea></label>
+            <div class="field-group">
+              <p>Allowed notice types</p>
+              <div class="option-grid" data-checkbox-group="allowed_notice_types"></div>
+            </div>
           </fieldset>
           <fieldset>
             <legend>Public content boundaries</legend>
-            <label>What we want to publish <textarea name="want_publish" placeholder="Competition dates&#10;Junior clinics&#10;Sponsor thanks"></textarea></label>
-            <label>Must not publish <textarea name="must_not_publish" placeholder="private member records&#10;exact fishing GPS&#10;private aura.md material"></textarea></label>
+            <div class="field-group">
+              <p>What we want to publish</p>
+              <div class="option-grid" data-checkbox-group="want_publish"></div>
+            </div>
+            <label>Extra public data ideas <textarea name="want_publish_custom" placeholder="one extra public data idea per line"></textarea></label>
+            <div class="field-group">
+              <p>Must not publish</p>
+              <div class="option-grid" data-checkbox-group="must_not_publish"></div>
+            </div>
+            <label>Extra privacy boundaries <textarea name="must_not_publish_custom" placeholder="one extra private boundary per line"></textarea></label>
             <label>Questions still needing real answers <textarea name="open_questions" placeholder="Who approves each notice type?&#10;Which devices should receive each notice?"></textarea></label>
-            <label>Review rhythm <input name="review_rhythm" placeholder="monthly"></label>
+            <label>Review rhythm
+              <select name="review_rhythm">
+                <option value="weekly">Weekly</option>
+                <option value="fortnightly">Fortnightly</option>
+                <option value="monthly">Monthly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="per_notice">Per notice</option>
+              </select>
+            </label>
           </fieldset>
           <div class="builder-actions">
             <button class="button primary" type="submit">Update markdown</button>
@@ -74,6 +146,7 @@
       </section>
     </main>
     <footer class="site-footer"><div class="footer-copy"><p>Builder for public_noticeboard.md.</p><p class="footer-note">This is the public publishing layer. Do not paste private aura.md content into public screens.</p></div></footer>
+    <script src="data.js"></script>
     <script src="public-noticeboard-builder.js"></script>
   </body>
 </html>
