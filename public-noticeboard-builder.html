@@ -29,7 +29,7 @@
       <section class="category-hero">
         <p class="eyebrow">Builder</p>
         <h1>Create notice file</h1>
-        <p class="hero-lede">A practical next step after profile.md and aura.md: decide what can safely become public screen data, what needs more questions, and what technical setup is still unknown.</p>
+        <p class="hero-lede">A practical next step after profile.md and aura.md: a public publisher can map what is safe for noticeboard screens, what needs more questions, and what technical setup is still unknown.</p>
         <div class="hero-actions">
           <a class="button secondary" href="https://auraofintelligence.github.io/sbt_profile_starter/">Profile Builder</a>
           <a class="button secondary" href="https://auraofintelligence.github.io/sbt_aura_builder/">Aura Builder</a>
@@ -39,10 +39,10 @@
         <form class="builder-form" data-public-noticeboard-form>
           <fieldset>
             <legend>Part A - basic public layer</legend>
-            <p class="part-note">Keep this simple. This is the public doorway: who you are, where you fit, and who can say yes before anything appears on a screen.</p>
+            <p class="part-note">Start with the public doorway: who the entity is, where it fits, and who can approve a notice before it appears on a screen.</p>
             <label>Category
               <select name="category" data-category-select>
-                <option value="">Choose the closest fit</option>
+                <option value="">Select the closest fit</option>
                 <option value="hospitality-and-retail">Hospitality and retail</option>
                 <option value="trades-and-services">Trades and services</option>
                 <option value="tourism-property-and-transport">Tourism, property and transport</option>
@@ -55,7 +55,7 @@
             <label class="conditional-field is-hidden" data-new-category-field>Requested category <input name="requested_category" placeholder="e.g. health and care, schools, local food system"></label>
             <label>Public name <input name="publisher_name" placeholder="Business, artist, club or group"></label>
             <label>Place or service area <input name="place" placeholder="Point Lookout, Dunwich, Amity, island-wide, online"></label>
-            <label>Plain-language role <textarea name="public_role" placeholder="What do people come to you for? What do you help with, sell, host, make, teach, repair, care for or coordinate?"></textarea></label>
+            <label>Plain-language role <textarea name="public_role" placeholder="What should the public know this entity does, offers, hosts, makes, teaches, repairs, cares for or coordinates?"></textarea></label>
             <label>Public profile.md path or link <input name="public_profile" placeholder="profiles/example/profile.md, website, social link, or leave blank"></label>
             <label>Who approves public notices? <input name="approval_owner" placeholder="Owner, manager, secretary, committee, artist, organiser, media helper"></label>
             <div class="field-group">
@@ -70,9 +70,9 @@
 
           <fieldset>
             <legend>Part B - advanced publishing choices</legend>
-            <p class="part-note">This is not a promise to publish everything. It is a conversation map for what might be useful, what aligns with local rhythm, and what still needs a real answer.</p>
+            <p class="part-note">This section is a search map, not a promise. Tick useful possibilities, add better wording where needed, and leave uncertain items as questions.</p>
             <div class="hint-panel" data-category-hint>
-              <h3>Choose a category for gentle starter prompts.</h3>
+              <h3>Select a category for starter prompts.</h3>
               <p>The form will suggest questions, but it will not assume the final data for anyone.</p>
             </div>
             <label>Review rhythm
@@ -86,26 +86,29 @@
               </select>
             </label>
             <div class="field-group">
-              <p>Public updates you might share</p>
+              <p>Public updates this entity might share</p>
               <div class="option-grid" data-checkbox-group="public_updates"></div>
             </div>
-            <label>Other public update ideas <textarea name="public_updates_other" placeholder="Anything missing from the tick boxes?"></textarea></label>
+            <label>Other public update ideas <textarea name="public_updates_other" placeholder="Anything useful that is missing from the listed prompts?"></textarea></label>
             <div class="field-group">
               <p>Theme families that might fit</p>
               <div class="option-grid" data-checkbox-group="theme_families"></div>
             </div>
             <label>Known local dates, seasons or global themes <textarea name="known_themes" placeholder="e.g. whale season, school holidays, junior sport week, World Environment Day, Reconciliation Week, arts trail dates"></textarea></label>
             <div class="field-group">
-              <p>Must not publish</p>
-              <div class="option-grid" data-checkbox-group="must_not_publish"></div>
+              <p>Never publish by default</p>
+              <div class="exclusion-panel">
+                <p>These are guardrails, not choices. The public noticeboard pipeline should exclude them unless a specific human approval process says otherwise.</p>
+                <ul data-default-exclusions></ul>
+              </div>
             </div>
-            <label>Extra privacy boundaries <textarea name="must_not_publish_other" placeholder="Anything else that must stay private, trusted-only, or permission-needed?"></textarea></label>
-            <label>Questions to ask before any real screen goes live <textarea name="open_questions" placeholder="Who approves each notice? What data is real? What expires? Which public source proves it? What should an agent ask next?"></textarea></label>
+            <label>Extra privacy boundaries for this entity <textarea name="must_not_publish_other" placeholder="Anything else that must stay private, trusted-only, permission-needed, seasonal, or source-checked?"></textarea></label>
+            <label>Questions still needing real answers <textarea name="open_questions" placeholder="Who approves each notice? What data is real? What expires? Which public source proves it? What should an agent ask next?"></textarea></label>
           </fieldset>
 
           <fieldset>
             <legend>Part C - technical pipeline</legend>
-            <p class="part-note">Only fill this in if you know it. This part is for the person setting up repositories, devices, screens, assets and sync rules.</p>
+            <p class="part-note">Technical setup can be left blank. This part is for the person setting up repositories, devices, screens, assets and sync rules.</p>
             <div class="field-group">
               <p>Screen shapes to support</p>
               <div class="option-grid compact" data-checkbox-group="screen_targets"></div>

@@ -10,6 +10,7 @@
   const categorySelect = document.querySelector("[data-category-select]");
   const newCategoryField = document.querySelector("[data-new-category-field]");
   const categoryHint = document.querySelector("[data-category-hint]");
+  const exclusionsList = document.querySelector("[data-default-exclusions]");
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
 
@@ -37,15 +38,15 @@
     ["learning_training", "Learning, training, skills and small business support"]
   ];
 
-  const mustNotPublishOptions = [
-    ["private_contact_details", "Private contact details"],
-    ["member_customer_records", "Private member, client or customer records"],
-    ["private_aura_material", "Private aura.md material"],
-    ["payments_accounts", "Payments, balances, accounts or access details"],
-    ["unapproved_images_names", "Names or photos without approval"],
-    ["exact_sensitive_locations", "Exact private GPS, protected places or sensitive locations"],
-    ["sensitive_safety_details", "Sensitive safety, emergency or security details"],
-    ["cultural_permission_needed", "Cultural, sacred or permission-needed material"]
+  const defaultExclusions = [
+    "Private contact details",
+    "Private member, client or customer records",
+    "Private aura.md material",
+    "Payments, balances, accounts or access details",
+    "Names or photos without approval",
+    "Exact private GPS, protected places or sensitive locations",
+    "Sensitive safety, emergency or security details",
+    "Cultural, sacred or permission-needed material"
   ];
 
   const screenOptions = [
@@ -59,27 +60,27 @@
 
   const categoryHints = {
     "hospitality-and-retail": {
-      focus: "Think daily usefulness: opening changes, specials, live music, bookings, stock, waste, food safety, local producers and visitor load.",
+      focus: "Search for daily usefulness: opening changes, specials, live music, bookings, stock, waste, food safety, local producers and visitor load.",
       questions: "Which updates already exist somewhere public? What changes often? Who checks the wording before a busy weekend?"
     },
     "trades-and-services": {
-      focus: "Think practical availability: service areas, repair windows, weather delays, call-out limits, apprenticeships, useful tips and community work.",
+      focus: "Search for practical availability: service areas, repair windows, weather delays, call-out limits, apprenticeships, useful tips and community work.",
       questions: "What can be public without creating too many calls? What should be seasonal? What is only for existing customers?"
     },
     "tourism-property-and-transport": {
-      focus: "Think visitor movement: tour times, booking pathways, ferry or weather pressure, open homes, respectful behaviour and accessibility.",
+      focus: "Search for visitor movement: tour times, booking pathways, ferry or weather pressure, open homes, respectful behaviour and accessibility.",
       questions: "What reduces confusion? What needs official source checking? What should expire quickly?"
     },
     "community-safety-and-sport": {
-      focus: "Think coordination: training, fixtures, safety notes, volunteer calls, facility status, fundraising, sponsor thanks and public meetings.",
+      focus: "Search for coordination needs: training, fixtures, safety notes, volunteer calls, facility status, fundraising, sponsor thanks and public meetings.",
       questions: "Who approves alerts? Which notices are public, member-only or emergency-only? What must stay off the screen?"
     },
     events: {
-      focus: "Think calendar rhythm: date, place, tickets, run sheets, weather plans, volunteers, accessibility, transport and post-event memory.",
+      focus: "Search for calendar rhythm: date, place, tickets, run sheets, weather plans, volunteers, accessibility, transport and post-event memory.",
       questions: "What is confirmed? What is draft? Who owns updates on the day?"
     },
     "artists-and-creative-hubs": {
-      focus: "Think creative visibility: studio openings, workshops, exhibition windows, artist statements, available works, accessibility and collaborations.",
+      focus: "Search for creative visibility: studio openings, workshops, exhibition windows, artist statements, available works, accessibility and collaborations.",
       questions: "What is public portfolio material? What needs artist consent? What should link back to the artist rather than live on a screen?"
     },
     "request-new-category": {
@@ -182,7 +183,6 @@
       public_updates_other: fieldValue("public_updates_other"),
       theme_families: checkedValues("theme_families"),
       known_themes: fieldValue("known_themes"),
-      must_not_publish: checkedValues("must_not_publish"),
       must_not_publish_other: fieldValue("must_not_publish_other"),
       open_questions: fieldValue("open_questions"),
       screen_targets: checkedValues("screen_targets"),
@@ -218,7 +218,7 @@
     const hint = categoryHints[state.category];
     newCategoryField.classList.toggle("is-hidden", state.category !== "request-new-category");
     if (!hint) {
-      categoryHint.innerHTML = "<h3>Choose a category for gentle starter prompts.</h3><p>The builder will suggest what to ask next, without pretending the answers are already known.</p>";
+      categoryHint.innerHTML = "<h3>Select a category for starter prompts.</h3><p>The builder will suggest what to ask next, without pretending the answers are already known.</p>";
       return;
     }
     categoryHint.innerHTML = "<h3>" + getCategoryLabel(state.category, state.requested_category) + "</h3><p>" + hint.focus + "</p><p class=\"hint-question\">" + hint.questions + "</p>";
@@ -230,7 +230,7 @@
     const categoryLabel = getCategoryLabel(state.category, state.requested_category);
     const publicUpdates = labelsFor(publicUpdateOptions, state.public_updates).concat(lines(state.public_updates_other));
     const themeFamilies = labelsFor(themeFamilyOptions, state.theme_families);
-    const privacyBoundaries = labelsFor(mustNotPublishOptions, state.must_not_publish).concat(lines(state.must_not_publish_other));
+    const privacyBoundaries = defaultExclusions.concat(lines(state.must_not_publish_other));
     const today = new Date().toLocaleDateString("en-AU", { year: "numeric", month: "2-digit", day: "2-digit" });
 
     return [
@@ -294,7 +294,7 @@
       "## Ready S.E.T. Media Notes",
       "",
       "- Ask missing-data questions before publishing.",
-      "- Treat tick boxes as prompts, not consent.",
+      "- Treat selected prompts as prompts, not consent.",
       "- Check privacy, expiry, cultural care and source approval.",
       "- Render only to approved device location IDs.",
       ""
@@ -311,10 +311,19 @@
     setRadio("asset_status", state.asset_status || "not_sure");
     renderCheckboxGroup("public_updates", publicUpdateOptions, state.public_updates || []);
     renderCheckboxGroup("theme_families", themeFamilyOptions, state.theme_families || []);
-    renderCheckboxGroup("must_not_publish", mustNotPublishOptions, state.must_not_publish || ["private_aura_material"]);
     renderCheckboxGroup("screen_targets", screenOptions, state.screen_targets || []);
+    renderDefaultExclusions();
     updateCategoryHint();
     output.value = buildMarkdown(getState());
+  }
+
+  function renderDefaultExclusions() {
+    if (!exclusionsList || exclusionsList.children.length) return;
+    defaultExclusions.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      exclusionsList.appendChild(li);
+    });
   }
 
   function hydrate() {
