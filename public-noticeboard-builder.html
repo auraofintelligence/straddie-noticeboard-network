@@ -28,15 +28,21 @@
     <main id="main">
       <section class="category-hero">
         <p class="eyebrow">Builder</p>
-        <h1>Create<br>notice<br>file</h1>
-        <p class="hero-lede">Answer the prompts, edit the generated public_noticeboard.md if needed, then copy or download the file. Answers stay in this browser unless you export them.</p>
+        <h1>Create notice file</h1>
+        <p class="hero-lede">A practical next step after profile.md and aura.md: decide what can safely become public screen data, what needs more questions, and what technical setup is still unknown.</p>
+        <div class="hero-actions">
+          <a class="button secondary" href="https://auraofintelligence.github.io/sbt_profile_starter/">Profile Builder</a>
+          <a class="button secondary" href="https://auraofintelligence.github.io/sbt_aura_builder/">Aura Builder</a>
+        </div>
       </section>
       <section class="section builder-layout">
         <form class="builder-form" data-public-noticeboard-form>
           <fieldset>
-            <legend>Category and identity</legend>
+            <legend>Part A - basic public layer</legend>
+            <p class="part-note">Keep this simple. This is the public doorway: who you are, where you fit, and who can say yes before anything appears on a screen.</p>
             <label>Category
               <select name="category" data-category-select>
+                <option value="">Choose the closest fit</option>
                 <option value="hospitality-and-retail">Hospitality and retail</option>
                 <option value="trades-and-services">Trades and services</option>
                 <option value="tourism-property-and-transport">Tourism, property and transport</option>
@@ -47,90 +53,77 @@
               </select>
             </label>
             <label class="conditional-field is-hidden" data-new-category-field>Requested category <input name="requested_category" placeholder="e.g. health and care, schools, local food system"></label>
-            <label>Publisher name <input name="publisher_name" placeholder="Your entity name"></label>
-            <label>Publisher type
-              <select name="publisher_type" data-publisher-type-select></select>
+            <label>Public name <input name="publisher_name" placeholder="Business, artist, club or group"></label>
+            <label>Place or service area <input name="place" placeholder="Point Lookout, Dunwich, Amity, island-wide, online"></label>
+            <label>Plain-language role <textarea name="public_role" placeholder="What do people come to you for? What do you help with, sell, host, make, teach, repair, care for or coordinate?"></textarea></label>
+            <label>Public profile.md path or link <input name="public_profile" placeholder="profiles/example/profile.md, website, social link, or leave blank"></label>
+            <label>Who approves public notices? <input name="approval_owner" placeholder="Owner, manager, secretary, committee, artist, organiser, media helper"></label>
+            <div class="field-group">
+              <p>Public contact preference</p>
+              <div class="option-grid compact">
+                <label><input type="radio" name="contact_preference" value="use_existing_public_contact"> Use existing public contact</label>
+                <label><input type="radio" name="contact_preference" value="ask_before_displaying_contact"> Ask before displaying contact details</label>
+                <label><input type="radio" name="contact_preference" value="no_public_contact_on_screens"> No public contact on screens</label>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Part B - advanced publishing choices</legend>
+            <p class="part-note">This is not a promise to publish everything. It is a conversation map for what might be useful, what aligns with local rhythm, and what still needs a real answer.</p>
+            <div class="hint-panel" data-category-hint>
+              <h3>Choose a category for gentle starter prompts.</h3>
+              <p>The form will suggest questions, but it will not assume the final data for anyone.</p>
+            </div>
+            <label>Review rhythm
+              <select name="review_rhythm">
+                <option value="">Not sure yet</option>
+                <option value="per_notice">Every notice</option>
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
+                <option value="seasonal">Seasonal</option>
+                <option value="quarterly">Quarterly</option>
+              </select>
             </label>
-            <label>Public profile path <input name="public_profile" placeholder="profiles/entity-name/profile.md"></label>
             <div class="field-group">
-              <p>Approval owner</p>
-              <div class="option-grid compact" data-radio-group="approval_owner">
-                <label><input type="radio" name="approval_owner" value="owner"> Owner</label>
-                <label><input type="radio" name="approval_owner" value="manager"> Manager</label>
-                <label><input type="radio" name="approval_owner" value="secretary"> Secretary</label>
-                <label><input type="radio" name="approval_owner" value="media_coordinator"> Media coordinator</label>
-                <label><input type="radio" name="approval_owner" value="committee"> Committee</label>
-                <label><input type="radio" name="approval_owner" value="other"> Other</label>
-              </div>
-              <label class="conditional-field is-hidden" data-approval-other-field>Other approval owner <input name="approval_owner_other" placeholder="Who signs off public notices?"></label>
+              <p>Public updates you might share</p>
+              <div class="option-grid" data-checkbox-group="public_updates"></div>
             </div>
-          </fieldset>
-          <fieldset>
-            <legend>Devices and screens</legend>
-            <label>Device location IDs <textarea name="device_location_ids" placeholder="one-location-id-per-line&#10;point-lookout-counter-01&#10;dunwich-window-01"></textarea></label>
+            <label>Other public update ideas <textarea name="public_updates_other" placeholder="Anything missing from the tick boxes?"></textarea></label>
             <div class="field-group">
-              <p>Screen targets</p>
-              <div class="option-grid compact" data-checkbox-group="screen_targets"></div>
+              <p>Theme families that might fit</p>
+              <div class="option-grid" data-checkbox-group="theme_families"></div>
             </div>
-            <div class="field-group">
-              <p>Asset pack</p>
-              <div class="option-grid compact" data-radio-group="asset_pack_mode">
-                <label><input type="radio" name="asset_pack_mode" value="category_default"> Category default</label>
-                <label><input type="radio" name="asset_pack_mode" value="entity_custom"> Entity custom</label>
-                <label><input type="radio" name="asset_pack_mode" value="text_only"> Text-only fallback</label>
-              </div>
-              <label class="conditional-field is-hidden" data-asset-pack-custom-field>Custom asset pack path <input name="asset_pack_custom" placeholder="entity-name/default"></label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Themes and notice types</legend>
-            <div class="field-group">
-              <p>Planning rhythm</p>
-              <div class="option-grid" data-radio-group="planning_mode">
-                <label><input type="radio" name="planning_mode" value="monthly_local_event"> Monthly planning around local events</label>
-                <label><input type="radio" name="planning_mode" value="local_seasonal"> Local seasonal cycle</label>
-                <label><input type="radio" name="planning_mode" value="un_global_themes"> UN/global observance themes</label>
-                <label><input type="radio" name="planning_mode" value="quarterly_mixed"> Quarterly mix of local and global themes</label>
-                <label><input type="radio" name="planning_mode" value="ad_hoc"> Ad hoc updates only</label>
-              </div>
-            </div>
-            <div class="field-group">
-              <p>Local themes</p>
-              <div class="option-grid" data-checkbox-group="local_themes"></div>
-            </div>
-            <div class="field-group">
-              <p>UN/global themes</p>
-              <div class="option-grid" data-checkbox-group="global_themes"></div>
-            </div>
-            <label>Custom themes <textarea name="custom_themes" placeholder="one extra theme per line"></textarea></label>
-            <div class="field-group">
-              <p>Allowed notice types</p>
-              <div class="option-grid" data-checkbox-group="allowed_notice_types"></div>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Public content boundaries</legend>
-            <div class="field-group">
-              <p>What we want to publish</p>
-              <div class="option-grid" data-checkbox-group="want_publish"></div>
-            </div>
-            <label>Extra public data ideas <textarea name="want_publish_custom" placeholder="one extra public data idea per line"></textarea></label>
+            <label>Known local dates, seasons or global themes <textarea name="known_themes" placeholder="e.g. whale season, school holidays, junior sport week, World Environment Day, Reconciliation Week, arts trail dates"></textarea></label>
             <div class="field-group">
               <p>Must not publish</p>
               <div class="option-grid" data-checkbox-group="must_not_publish"></div>
             </div>
-            <label>Extra privacy boundaries <textarea name="must_not_publish_custom" placeholder="one extra private boundary per line"></textarea></label>
-            <label>Questions still needing real answers <textarea name="open_questions" placeholder="Who approves each notice type?&#10;Which devices should receive each notice?"></textarea></label>
-            <label>Review rhythm
-              <select name="review_rhythm">
-                <option value="weekly">Weekly</option>
-                <option value="fortnightly">Fortnightly</option>
-                <option value="monthly">Monthly</option>
-                <option value="quarterly">Quarterly</option>
-                <option value="per_notice">Per notice</option>
-              </select>
-            </label>
+            <label>Extra privacy boundaries <textarea name="must_not_publish_other" placeholder="Anything else that must stay private, trusted-only, or permission-needed?"></textarea></label>
+            <label>Questions to ask before any real screen goes live <textarea name="open_questions" placeholder="Who approves each notice? What data is real? What expires? Which public source proves it? What should an agent ask next?"></textarea></label>
           </fieldset>
+
+          <fieldset>
+            <legend>Part C - technical pipeline</legend>
+            <p class="part-note">Only fill this in if you know it. This part is for the person setting up repositories, devices, screens, assets and sync rules.</p>
+            <div class="field-group">
+              <p>Screen shapes to support</p>
+              <div class="option-grid compact" data-checkbox-group="screen_targets"></div>
+            </div>
+            <label>Device location IDs <textarea name="device_location_ids" placeholder="Optional. One per line, e.g. point-lookout-counter-01"></textarea></label>
+            <div class="field-group">
+              <p>Asset situation</p>
+              <div class="option-grid compact">
+                <label><input type="radio" name="asset_status" value="not_sure"> Not sure yet</label>
+                <label><input type="radio" name="asset_status" value="has_brand_assets"> Has brand assets</label>
+                <label><input type="radio" name="asset_status" value="needs_asset_pack"> Needs an asset pack</label>
+                <label><input type="radio" name="asset_status" value="text_only_first"> Text-only first</label>
+              </div>
+            </div>
+            <label>Asset pack or folder notes <input name="asset_pack" placeholder="Optional path, folder name, logo notes or screen-size notes"></label>
+            <label>Sync or repository notes <textarea name="sync_notes" placeholder="Optional. GitHub repo, local folder, agent pipeline, manual upload, offline cache, approval workflow, or unknowns."></textarea></label>
+          </fieldset>
+
           <div class="builder-actions">
             <button class="button primary" type="submit">Update markdown</button>
             <button class="button secondary" type="button" data-copy-public-noticeboard>Copy markdown</button>
@@ -145,7 +138,7 @@
         </aside>
       </section>
     </main>
-    <footer class="site-footer"><div class="footer-copy"><p>Builder for public_noticeboard.md.</p><p class="footer-note">This is the public publishing layer. Do not paste private aura.md content into public screens.</p></div></footer>
+    <footer class="site-footer"><div class="footer-copy"><p>Builder for public_noticeboard.md.</p><p class="footer-note">Public noticeboard files can refer to profile.md. They must not expose private aura.md material.</p></div></footer>
     <script src="data.js"></script>
     <script src="public-noticeboard-builder.js"></script>
   </body>

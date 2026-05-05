@@ -8,102 +8,83 @@
   const downloadButton = document.querySelector("[data-download-public-noticeboard]");
   const clearButton = document.querySelector("[data-clear-public-noticeboard]");
   const categorySelect = document.querySelector("[data-category-select]");
-  const publisherTypeSelect = document.querySelector("[data-publisher-type-select]");
   const newCategoryField = document.querySelector("[data-new-category-field]");
-  const approvalOtherField = document.querySelector("[data-approval-other-field]");
-  const assetPackCustomField = document.querySelector("[data-asset-pack-custom-field]");
+  const categoryHint = document.querySelector("[data-category-hint]");
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
 
+  const publicUpdateOptions = [
+    ["opening_or_availability", "Opening hours, availability or service area"],
+    ["events_or_workshops", "Events, workshops, classes or meetings"],
+    ["offers_or_stock", "Specials, stock, tickets or booking notes"],
+    ["volunteers_or_rosters", "Volunteer calls, rosters or help needed"],
+    ["safety_or_disruption", "Safety notes, weather changes or disruptions"],
+    ["creative_or_story", "Artist statements, public stories or cultural notes"],
+    ["fundraising_or_thanks", "Fundraisers, sponsor thanks or public acknowledgements"],
+    ["community_question", "A question or invitation for community input"]
+  ];
+
+  const themeFamilyOptions = [
+    ["local_events", "Local events and monthly planning"],
+    ["local_seasons", "Local seasons, weather and visitor rhythm"],
+    ["global_observances", "UN/global observances or world days"],
+    ["care_and_wellbeing", "Care, inclusion and wellbeing"],
+    ["arts_culture_language", "Arts, culture, language and story"],
+    ["sport_youth_families", "Sport, youth and families"],
+    ["food_local_economy", "Food, local producers and local economy"],
+    ["environment_country_wildlife", "Environment, Country, wildlife and waste"],
+    ["resilience_readiness", "Storm, fire, ferry, power or disaster readiness"],
+    ["learning_training", "Learning, training, skills and small business support"]
+  ];
+
+  const mustNotPublishOptions = [
+    ["private_contact_details", "Private contact details"],
+    ["member_customer_records", "Private member, client or customer records"],
+    ["private_aura_material", "Private aura.md material"],
+    ["payments_accounts", "Payments, balances, accounts or access details"],
+    ["unapproved_images_names", "Names or photos without approval"],
+    ["exact_sensitive_locations", "Exact private GPS, protected places or sensitive locations"],
+    ["sensitive_safety_details", "Sensitive safety, emergency or security details"],
+    ["cultural_permission_needed", "Cultural, sacred or permission-needed material"]
+  ];
+
   const screenOptions = [
-    ["wall_16x9", "Wall screen 16:9"],
+    ["wall_16x9", "Wall screen"],
     ["kiosk_portrait", "Portrait kiosk"],
     ["counter_tablet", "Counter tablet"],
     ["phone_story", "Phone story"],
-    ["offline_fallback", "Offline text fallback"],
-    ["ticker", "Ticker strip"]
+    ["ticker", "Ticker strip"],
+    ["offline_fallback", "Offline text fallback"]
   ];
 
-  const mustNotPublish = [
-    ["private_contact_details", "Private contact details"],
-    ["private_member_or_customer_records", "Private member or customer records"],
-    ["payments_or_account_access", "Payments, balances or account access"],
-    ["private_aura_material", "Private aura.md material"],
-    ["unapproved_photos", "Unapproved photos or names"],
-    ["sensitive_safety_details", "Sensitive emergency or safety details"],
-    ["exact_private_gps", "Exact private GPS or protected location details"]
-  ];
-
-  const templates = {
+  const categoryHints = {
     "hospitality-and-retail": {
-      publisherTypes: ["cafe_or_food", "retail_shop", "bar_or_venue", "market_stall", "accommodation_hospitality", "other"],
-      planning: "monthly_local_event",
-      review: "weekly",
-      screens: ["counter_tablet", "phone_story", "kiosk_portrait"],
-      localThemes: ["whale-season", "shared-table-week", "low-waste-island"],
-      globalThemes: ["world-food-day", "world-tourism-day", "msme-day"],
-      noticeTypes: ["opening_hours", "daily_special", "live_music", "stock_update", "booking_alert", "fundraiser", "food_safety_note"],
-      publish: ["opening hours and changes", "daily specials or local produce", "live music and small events", "booking links", "low-waste or refill notes", "fundraising and community support"]
+      focus: "Think daily usefulness: opening changes, specials, live music, bookings, stock, waste, food safety, local producers and visitor load.",
+      questions: "Which updates already exist somewhere public? What changes often? Who checks the wording before a busy weekend?"
     },
     "trades-and-services": {
-      publisherTypes: ["trade_business", "repair_service", "professional_service", "emergency_repair", "supplier", "other"],
-      planning: "local_seasonal",
-      review: "fortnightly",
-      screens: ["phone_story", "counter_tablet", "offline_fallback"],
-      localThemes: ["storm-and-fire-ready", "low-waste-island"],
-      globalThemes: ["msme-day", "world-water-day", "world-environment-day"],
-      noticeTypes: ["availability_window", "service_area", "weather_delay", "repair_tip", "apprenticeship_call", "community_job_done"],
-      publish: ["availability windows", "service areas", "weather delays", "repair tips", "apprenticeship or hiring calls", "completed community work"]
+      focus: "Think practical availability: service areas, repair windows, weather delays, call-out limits, apprenticeships, useful tips and community work.",
+      questions: "What can be public without creating too many calls? What should be seasonal? What is only for existing customers?"
     },
     "tourism-property-and-transport": {
-      publisherTypes: ["tour_operator", "accommodation", "transport_service", "property_service", "visitor_information", "other"],
-      planning: "local_seasonal",
-      review: "weekly",
-      screens: ["kiosk_portrait", "phone_story", "ticker", "offline_fallback"],
-      localThemes: ["whale-season", "storm-and-fire-ready", "low-waste-island"],
-      globalThemes: ["world-tourism-day", "world-water-day", "mother-earth-day"],
-      noticeTypes: ["tour_time", "visitor_pressure", "booking_pathway", "open_home", "transport_update", "weather_change"],
-      publish: ["tour times", "visitor guidance", "booking pathways", "transport pressure", "weather changes", "open homes or inspection windows"]
+      focus: "Think visitor movement: tour times, booking pathways, ferry or weather pressure, open homes, respectful behaviour and accessibility.",
+      questions: "What reduces confusion? What needs official source checking? What should expire quickly?"
     },
     "community-safety-and-sport": {
-      publisherTypes: ["club", "community_group", "safety_service", "sporting_club", "volunteer_group", "other"],
-      planning: "quarterly_mixed",
-      review: "monthly",
-      screens: ["wall_16x9", "kiosk_portrait", "phone_story", "offline_fallback"],
-      localThemes: ["junior-sport-week", "storm-and-fire-ready", "shared-table-week"],
-      globalThemes: ["world-environment-day", "world-water-day", "science-day"],
-      noticeTypes: ["event", "training_day", "safety_note", "volunteer_call", "fundraiser", "sponsor_thanks", "facility_status"],
-      publish: ["training days", "fixtures or events", "safety notes", "volunteer calls", "fundraisers", "sponsor thanks", "facility status"]
+      focus: "Think coordination: training, fixtures, safety notes, volunteer calls, facility status, fundraising, sponsor thanks and public meetings.",
+      questions: "Who approves alerts? Which notices are public, member-only or emergency-only? What must stay off the screen?"
     },
-    "events": {
-      publisherTypes: ["event", "festival", "market", "workshop", "community_gathering", "other"],
-      planning: "monthly_local_event",
-      review: "per_notice",
-      screens: ["kiosk_portrait", "phone_story", "counter_tablet", "ticker"],
-      localThemes: ["straddie-arts-trail-window", "shared-table-week", "whale-season"],
-      globalThemes: ["world-food-day", "creativity-and-innovation-day", "world-tourism-day"],
-      noticeTypes: ["date_and_time", "venue", "ticket_link", "volunteer_call", "weather_change", "accessibility_note", "post_event_memory"],
-      publish: ["dates and times", "locations", "ticket links", "volunteer calls", "weather changes", "accessibility notes", "post-event public memory"]
+    events: {
+      focus: "Think calendar rhythm: date, place, tickets, run sheets, weather plans, volunteers, accessibility, transport and post-event memory.",
+      questions: "What is confirmed? What is draft? Who owns updates on the day?"
     },
     "artists-and-creative-hubs": {
-      publisherTypes: ["artist", "studio", "gallery", "workshop", "creative_collective", "maker", "other"],
-      planning: "quarterly_mixed",
-      review: "monthly",
-      screens: ["phone_story", "counter_tablet", "kiosk_portrait"],
-      localThemes: ["straddie-arts-trail-window", "whale-season", "low-waste-island"],
-      globalThemes: ["creativity-and-innovation-day", "mother-language-day", "world-bee-day"],
-      noticeTypes: ["studio_opening", "workshop", "exhibition_window", "artist_statement", "available_works", "collaboration_call", "accessibility_note"],
-      publish: ["studio opening hours", "workshops", "exhibition windows", "artist statements", "available works", "collaboration calls", "accessibility notes"]
+      focus: "Think creative visibility: studio openings, workshops, exhibition windows, artist statements, available works, accessibility and collaborations.",
+      questions: "What is public portfolio material? What needs artist consent? What should link back to the artist rather than live on a screen?"
     },
     "request-new-category": {
-      publisherTypes: ["new_category_request", "other"],
-      planning: "quarterly_mixed",
-      review: "monthly",
-      screens: ["phone_story", "counter_tablet", "offline_fallback"],
-      localThemes: ["shared-table-week", "storm-and-fire-ready"],
-      globalThemes: ["msme-day", "science-day"],
-      noticeTypes: ["notice", "event", "resource", "availability", "question_for_real_data"],
-      publish: ["public notices", "events", "resources", "availability", "questions for real data"]
+      focus: "Name the missing category in plain language. The goal is to learn what the island actually needs, not force everyone into the first six buckets.",
+      questions: "Who belongs in this category? What public data would help them? What should the builder ask next?"
     }
   };
 
@@ -138,28 +119,17 @@
     return items.map((item) => indent + "- " + yamlScalar(item)).join("\n");
   }
 
-  function getCategoryLabel(slug) {
+  function getCategoryLabel(slug, requested) {
+    if (slug === "request-new-category") return requested || "Requested new category";
     const categories = (data.project && data.project.categoryPages) || [];
     const match = categories.find((category) => category.slug === slug);
-    return match ? match.label : titleCase(slug);
+    return match ? match.label : titleCase(slug || "Unchosen category");
   }
 
-  function themeOptions(key) {
-    const items = key === "local_themes" ? data.localThemePrompts || [] : data.themeCalendar || [];
-    return items.map((item) => [
-      item.id,
-      item.title + (item.cadence ? " - " + item.cadence : item.dateRule ? " - " + item.dateRule : "")
-    ]);
-  }
-
-  function getTemplate(category) {
-    return templates[category] || templates["request-new-category"];
-  }
-
-  function makeOptionControl(type, name, value, label, checked) {
+  function makeOption(name, value, label, checked) {
     const wrapper = document.createElement("label");
     const input = document.createElement("input");
-    input.type = type;
+    input.type = "checkbox";
     input.name = name;
     input.value = value;
     input.checked = checked;
@@ -171,53 +141,16 @@
     const mount = document.querySelector('[data-checkbox-group="' + name + '"]');
     if (!mount) return;
     mount.innerHTML = "";
-    options.forEach(([value, label]) => {
-      mount.appendChild(makeOptionControl("checkbox", name, value, label, selected.includes(value)));
-    });
-  }
-
-  function renderRadioDefaults(state) {
-    ["approval_owner", "asset_pack_mode", "planning_mode"].forEach((name) => {
-      const value = state[name];
-      if (!value) return;
-      const input = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
-      if (input) input.checked = true;
-    });
-  }
-
-  function renderPublisherTypes(category, selected) {
-    const template = getTemplate(category);
-    publisherTypeSelect.innerHTML = "";
-    template.publisherTypes.forEach((type) => {
-      const option = document.createElement("option");
-      option.value = type;
-      option.textContent = titleCase(type);
-      option.selected = type === selected;
-      publisherTypeSelect.appendChild(option);
-    });
-  }
-
-  function renderAdaptiveControls(category, savedState) {
-    const template = getTemplate(category);
-    const state = savedState || {};
-    renderPublisherTypes(category, state.publisher_type || template.publisherTypes[0]);
-    renderCheckboxGroup("screen_targets", screenOptions, state.screen_targets || template.screens);
-    renderCheckboxGroup("local_themes", themeOptions("local_themes"), state.local_themes || template.localThemes);
-    renderCheckboxGroup("global_themes", themeOptions("global_themes"), state.global_themes || template.globalThemes);
-    renderCheckboxGroup("allowed_notice_types", template.noticeTypes.map((item) => [item, titleCase(item)]), state.allowed_notice_types || template.noticeTypes);
-    renderCheckboxGroup("want_publish", template.publish.map((item) => [item, item]), state.want_publish || template.publish);
-    renderCheckboxGroup("must_not_publish", mustNotPublish, state.must_not_publish || ["private_contact_details", "private_aura_material", "unapproved_photos"]);
-    renderRadioDefaults({
-      approval_owner: state.approval_owner || "owner",
-      asset_pack_mode: state.asset_pack_mode || "category_default",
-      planning_mode: state.planning_mode || template.planning
-    });
-    form.elements.review_rhythm.value = state.review_rhythm || template.review;
-    toggleConditionalFields();
+    options.forEach(([value, label]) => mount.appendChild(makeOption(name, value, label, selected.includes(value))));
   }
 
   function checkedValues(name) {
     return [...form.querySelectorAll('input[name="' + name + '"]:checked')].map((input) => input.value);
+  }
+
+  function labelsFor(options, values) {
+    const map = new Map(options.map(([value, label]) => [value, label]));
+    return values.map((value) => map.get(value) || value);
   }
 
   function radioValue(name) {
@@ -229,35 +162,35 @@
     return form.elements[name] ? form.elements[name].value : "";
   }
 
+  function setRadio(name, value) {
+    const input = form.querySelector('input[name="' + name + '"][value="' + value + '"]');
+    if (input) input.checked = true;
+  }
+
   function getState() {
     return {
       category: fieldValue("category"),
       requested_category: fieldValue("requested_category"),
       publisher_name: fieldValue("publisher_name"),
-      publisher_type: fieldValue("publisher_type"),
+      place: fieldValue("place"),
+      public_role: fieldValue("public_role"),
       public_profile: fieldValue("public_profile"),
-      approval_owner: radioValue("approval_owner"),
-      approval_owner_other: fieldValue("approval_owner_other"),
-      device_location_ids: fieldValue("device_location_ids"),
-      screen_targets: checkedValues("screen_targets"),
-      asset_pack_mode: radioValue("asset_pack_mode"),
-      asset_pack_custom: fieldValue("asset_pack_custom"),
-      planning_mode: radioValue("planning_mode"),
-      local_themes: checkedValues("local_themes"),
-      global_themes: checkedValues("global_themes"),
-      custom_themes: fieldValue("custom_themes"),
-      allowed_notice_types: checkedValues("allowed_notice_types"),
-      want_publish: checkedValues("want_publish"),
-      want_publish_custom: fieldValue("want_publish_custom"),
+      approval_owner: fieldValue("approval_owner"),
+      contact_preference: radioValue("contact_preference"),
+      review_rhythm: fieldValue("review_rhythm"),
+      public_updates: checkedValues("public_updates"),
+      public_updates_other: fieldValue("public_updates_other"),
+      theme_families: checkedValues("theme_families"),
+      known_themes: fieldValue("known_themes"),
       must_not_publish: checkedValues("must_not_publish"),
-      must_not_publish_custom: fieldValue("must_not_publish_custom"),
+      must_not_publish_other: fieldValue("must_not_publish_other"),
       open_questions: fieldValue("open_questions"),
-      review_rhythm: fieldValue("review_rhythm")
+      screen_targets: checkedValues("screen_targets"),
+      device_location_ids: fieldValue("device_location_ids"),
+      asset_status: radioValue("asset_status"),
+      asset_pack: fieldValue("asset_pack"),
+      sync_notes: fieldValue("sync_notes")
     };
-  }
-
-  function saveState() {
-    sessionStorage.setItem(storageKey, JSON.stringify(getState()));
   }
 
   function readState() {
@@ -268,6 +201,10 @@
     }
   }
 
+  function saveState() {
+    sessionStorage.setItem(storageKey, JSON.stringify(getState()));
+  }
+
   function setStatus(message) {
     status.textContent = message;
     window.clearTimeout(setStatus.timer);
@@ -276,106 +213,112 @@
     }, 2800);
   }
 
-  function approvalOwner(state) {
-    return state.approval_owner === "other" ? state.approval_owner_other || "other" : state.approval_owner || "TODO";
-  }
-
-  function assetPack(state) {
-    const publisherSlug = slugify(state.publisher_name);
-    if (state.asset_pack_mode === "text_only") return "text_only";
-    if (state.asset_pack_mode === "entity_custom") return state.asset_pack_custom || publisherSlug + "/default";
-    return slugify(state.category === "request-new-category" ? state.requested_category : state.category) + "/default";
+  function updateCategoryHint() {
+    const state = getState();
+    const hint = categoryHints[state.category];
+    newCategoryField.classList.toggle("is-hidden", state.category !== "request-new-category");
+    if (!hint) {
+      categoryHint.innerHTML = "<h3>Choose a category for gentle starter prompts.</h3><p>The builder will suggest what to ask next, without pretending the answers are already known.</p>";
+      return;
+    }
+    categoryHint.innerHTML = "<h3>" + getCategoryLabel(state.category, state.requested_category) + "</h3><p>" + hint.focus + "</p><p class=\"hint-question\">" + hint.questions + "</p>";
   }
 
   function buildMarkdown(state) {
     const publisherName = state.publisher_name || "Example Publisher";
-    const categoryLabel = state.category === "request-new-category" ? state.requested_category || "Requested new category" : getCategoryLabel(state.category);
     const publicProfile = state.public_profile || "profiles/" + slugify(publisherName) + "/profile.md";
+    const categoryLabel = getCategoryLabel(state.category, state.requested_category);
+    const publicUpdates = labelsFor(publicUpdateOptions, state.public_updates).concat(lines(state.public_updates_other));
+    const themeFamilies = labelsFor(themeFamilyOptions, state.theme_families);
+    const privacyBoundaries = labelsFor(mustNotPublishOptions, state.must_not_publish).concat(lines(state.must_not_publish_other));
     const today = new Date().toLocaleDateString("en-AU", { year: "numeric", month: "2-digit", day: "2-digit" });
-    const customThemes = lines(state.custom_themes);
-    const publishItems = state.want_publish.concat(lines(state.want_publish_custom));
-    const privateItems = state.must_not_publish.concat(lines(state.must_not_publish_custom));
 
     return [
       "---",
       "schema: public_noticeboard.v0",
+      "status: draft_for_human_review",
       "publisher_name: " + yamlScalar(publisherName),
-      "publisher_type: " + yamlScalar(state.publisher_type),
       "category: " + yamlScalar(categoryLabel),
       state.category === "request-new-category" ? "requested_category: " + yamlScalar(state.requested_category) : "category_slug: " + yamlScalar(state.category),
+      "place_or_service_area: " + yamlScalar(state.place),
       "public_profile: " + yamlScalar(publicProfile),
       "private_aura: not_public",
-      "approval_owner: " + yamlScalar(approvalOwner(state)),
-      "planning_mode: " + yamlScalar(state.planning_mode),
-      "local_asset_pack: " + yamlScalar(assetPack(state)),
-      "device_location_ids:",
-      yamlList(lines(state.device_location_ids), "  "),
+      "approval_owner: " + yamlScalar(state.approval_owner),
+      "contact_preference: " + yamlScalar(state.contact_preference || "ask_before_displaying_contact"),
+      "review_rhythm: " + yamlScalar(state.review_rhythm || "not_sure_yet"),
+      "last_reviewed: " + yamlScalar(today),
       "screen_targets:",
       yamlList(state.screen_targets, "  "),
-      "theme_preferences:",
-      "  local:",
-      yamlList(state.local_themes, "    "),
-      "  global:",
-      yamlList(state.global_themes, "    "),
-      "  custom:",
-      yamlList(customThemes, "    "),
-      "allowed_notice_types:",
-      yamlList(state.allowed_notice_types, "  "),
-      "must_not_publish:",
-      yamlList(privateItems, "  "),
-      "review_rhythm: " + yamlScalar(state.review_rhythm),
-      "last_reviewed: " + yamlScalar(today),
+      "device_location_ids:",
+      yamlList(lines(state.device_location_ids), "  "),
+      "asset_status: " + yamlScalar(state.asset_status || "not_sure"),
+      "asset_pack_notes: " + yamlScalar(state.asset_pack),
       "---",
       "",
       "# Public Noticeboard Contract",
       "",
-      "This file describes what " + publisherName + " is happy to show on public screens.",
+      "This file follows `profile.md` as the public identity layer and treats `aura.md` as private context that must not be copied onto public screens.",
       "",
-      "It can link to `profile.md` for public identity. It must not publish private `aura.md` material.",
+      "## Part A - Basic Public Layer",
       "",
-      "## What We Want To Publish",
+      "**Plain-language role:** " + (state.public_role || "TODO"),
       "",
-      yamlList(publishItems, ""),
+      "**Approval owner:** " + (state.approval_owner || "TODO"),
       "",
-      "## Questions Still Needing Real Answers",
+      "## Part B - Advanced Publishing Choices",
+      "",
+      "### Public updates we might share",
+      "",
+      yamlList(publicUpdates, ""),
+      "",
+      "### Theme families to explore",
+      "",
+      yamlList(themeFamilies, ""),
+      "",
+      "### Known dates, seasons or global themes",
+      "",
+      yamlList(lines(state.known_themes), ""),
+      "",
+      "### Must not publish",
+      "",
+      yamlList(privacyBoundaries, ""),
+      "",
+      "### Questions still needing real answers",
       "",
       yamlList(lines(state.open_questions), ""),
       "",
+      "## Part C - Technical Pipeline Notes",
+      "",
+      yamlList(lines(state.sync_notes), ""),
+      "",
       "## Ready S.E.T. Media Notes",
       "",
-      "- Draft notices from this contract before choosing layouts.",
       "- Ask missing-data questions before publishing.",
+      "- Treat tick boxes as prompts, not consent.",
       "- Check privacy, expiry, cultural care and source approval.",
       "- Render only to approved device location IDs.",
       ""
     ].join("\n");
   }
 
-  function toggleConditionalFields() {
-    newCategoryField.classList.toggle("is-hidden", fieldValue("category") !== "request-new-category");
-    approvalOtherField.classList.toggle("is-hidden", radioValue("approval_owner") !== "other");
-    assetPackCustomField.classList.toggle("is-hidden", radioValue("asset_pack_mode") !== "entity_custom");
-  }
-
   function applyState(state) {
     Object.entries(state).forEach(([name, value]) => {
       const element = form.elements[name];
-      if (!element || Array.isArray(value)) return;
-      if (element instanceof RadioNodeList) return;
+      if (!element || Array.isArray(value) || element instanceof RadioNodeList) return;
       element.value = value;
     });
-    renderRadioDefaults(state);
-    toggleConditionalFields();
+    setRadio("contact_preference", state.contact_preference || "ask_before_displaying_contact");
+    setRadio("asset_status", state.asset_status || "not_sure");
+    renderCheckboxGroup("public_updates", publicUpdateOptions, state.public_updates || []);
+    renderCheckboxGroup("theme_families", themeFamilyOptions, state.theme_families || []);
+    renderCheckboxGroup("must_not_publish", mustNotPublishOptions, state.must_not_publish || ["private_aura_material"]);
+    renderCheckboxGroup("screen_targets", screenOptions, state.screen_targets || []);
+    updateCategoryHint();
     output.value = buildMarkdown(getState());
   }
 
   function hydrate() {
-    const state = readState();
-    const category = state.category || fieldValue("category") || "hospitality-and-retail";
-    categorySelect.value = category;
-    renderAdaptiveControls(category, state);
-    applyState(state);
-    if (!state.category) output.value = buildMarkdown(getState());
+    applyState(readState());
   }
 
   function downloadText(filename, text) {
@@ -390,28 +333,14 @@
     URL.revokeObjectURL(url);
   }
 
-  categorySelect.addEventListener("change", () => {
-    const keep = getState();
-    keep.category = fieldValue("category");
-    keep.screen_targets = undefined;
-    keep.local_themes = undefined;
-    keep.global_themes = undefined;
-    keep.allowed_notice_types = undefined;
-    keep.want_publish = undefined;
-    renderAdaptiveControls(keep.category, keep);
-    saveState();
-    output.value = buildMarkdown(getState());
-    setStatus("Category template updated.");
-  });
-
   form.addEventListener("input", () => {
-    toggleConditionalFields();
+    updateCategoryHint();
     saveState();
     output.value = buildMarkdown(getState());
   });
 
   form.addEventListener("change", () => {
-    toggleConditionalFields();
+    updateCategoryHint();
     saveState();
     output.value = buildMarkdown(getState());
   });
@@ -446,8 +375,7 @@
   clearButton.addEventListener("click", () => {
     sessionStorage.removeItem(storageKey);
     form.reset();
-    renderAdaptiveControls(fieldValue("category") || "hospitality-and-retail", {});
-    output.value = buildMarkdown(getState());
+    applyState({});
     setStatus("Answers cleared.");
   });
 
