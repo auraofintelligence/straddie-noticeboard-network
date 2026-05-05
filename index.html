@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A standalone Straddie public noticeboard network prototype using markdown frontmatter feeds, per-entity theme packs and device-specific screen adapters.">
+    <title>Straddie Noticeboard Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-links">
+          <a href="#pipeline">Pipeline</a>
+          <a href="#screens">Screens</a>
+          <a href="#themes">Themes</a>
+          <a href="#entities">Entities</a>
+          <a href="#agents">Agents</a>
+          <a href="public-noticeboard.html">public_noticeboard.md</a>
+          <a href="#markdown">Markdown</a>
+        </div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <p class="eyebrow">Markdown to many screens</p>
+          <h1 id="hero-title">Straddie Noticeboard Network</h1>
+          <p class="hero-lede" data-project-deck></p>
+          <p class="source-line" data-project-source></p>
+          <div class="hero-actions">
+            <a class="button primary" href="#entities">Explore publishers</a>
+            <a class="button secondary" href="public-noticeboard.html">Open public_noticeboard.md</a>
+            <a class="button secondary" href="noticeboard/README.md">Open pipeline files</a>
+          </div>
+        </div>
+      </section>
+      <section class="intro-band">Standalone repo. Same broad design family, new identity. PLFC is one possible custom display example, not the visual rule for everyone.</section>
+      <section class="section two-col" aria-labelledby="brief-title">
+        <article class="source-panel">
+          <p class="eyebrow">Brief</p>
+          <h2 id="brief-title">What this prototype is saying</h2>
+          <ul class="brief-points" data-principles></ul>
+        </article>
+        <article class="moonshot-panel">
+          <p class="eyebrow">Boundary</p>
+          <h2>Supposed data, not consent</h2>
+          <p data-boundary></p>
+        </article>
+      </section>
+      <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+        <div class="section-heading">
+          <p class="eyebrow">Pipeline</p>
+          <h2 id="pipeline-title">Boring files, flexible screens.</h2>
+          <p>The data layer stays simple so each business, artist, club or service can build its own look around it.</p>
+        </div>
+        <div class="notice-pipeline" data-pipeline></div>
+      </section>
+      <section class="section wide visual-band" id="screens" aria-labelledby="screens-title">
+        <div class="section-heading">
+          <p class="eyebrow">Screen adapters</p>
+          <h2 id="screens-title">The same notice fits different shapes.</h2>
+        </div>
+        <div class="screen-grid" data-screens></div>
+      </section>
+      <section class="section" id="themes" aria-labelledby="themes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Theme calendar</p>
+          <h2 id="themes-title">Scheduled meaning, not random content.</h2>
+          <p>Local and global themes can become opt-in publishing prompts. Each entity can tick what fits its values each month or quarter, ignore what does not fit, and add its own island-specific themes.</p>
+        </div>
+        <div class="theme-layout">
+          <div>
+            <h3>Global prompts</h3>
+            <div class="theme-grid" data-theme-calendar></div>
+          </div>
+          <div>
+            <h3>Local prompts</h3>
+            <div class="theme-grid compact" data-local-themes></div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="entities" aria-labelledby="entities-title">
+        <div class="section-heading">
+          <p class="eyebrow">Category pages</p>
+          <h2 id="entities-title">Every category gets its own page.</h2>
+          <p><span data-entity-count></span> named entities are grouped from the research notes. Each category page contains one card per entity, with example markdown and questions to discover the real data.</p>
+        </div>
+        <div class="category-grid" data-category-pages></div>
+      </section>
+      <section class="section wide visual-band" id="entity-browser" aria-labelledby="entity-browser-title">
+        <div class="section-heading">
+          <p class="eyebrow">Quick browser</p>
+          <h2 id="entity-browser-title">Browse the live catalogue here too.</h2>
+        </div>
+        <div class="entity-browser">
+          <div class="entity-tabs" data-entity-tabs></div>
+          <article class="entity-detail" data-entity-detail></article>
+        </div>
+      </section>
+      <section class="section" id="agents" aria-labelledby="agents-title">
+        <div class="section-heading">
+          <p class="eyebrow">Agent pipelines</p>
+          <h2 id="agents-title">Ready S.E.T. media agents turn updates into safe public files.</h2>
+          <p>The co-op media layer can help entities draft, check, approve and render notices without forcing every local business or artist to become technical.</p>
+        </div>
+        <div class="agent-grid" data-agent-pipelines></div>
+      </section>
+      <section class="section wide visual-band" id="devices" aria-labelledby="devices-title">
+        <div class="section-heading">
+          <p class="eyebrow">Device location IDs</p>
+          <h2 id="devices-title">Every screen needs a name, place and fallback mode.</h2>
+          <p>The markdown only becomes useful when devices around the island know where they are, what shape they are, what assets they have locally, and what to do offline.</p>
+        </div>
+        <div class="device-grid" data-device-locations></div>
+      </section>
+      <section class="section wide visual-band" id="markdown" aria-labelledby="markdown-title">
+        <div class="section-heading">
+          <p class="eyebrow">Markdown contract</p>
+          <h2 id="markdown-title">Frontmatter is the shared language.</h2>
+        </div>
+        <div class="md-examples" data-markdown-examples></div>
+      </section>
+      <section class="section" id="feeds" aria-labelledby="feeds-title">
+        <div class="section-heading">
+          <p class="eyebrow">Repo files</p>
+          <h2 id="feeds-title">Sample feeds and device manifests.</h2>
+        </div>
+        <div class="file-grid" data-file-grid></div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-copy">
+        <p>Straddie Noticeboard Network is a standalone public noticeboard pipeline prototype.</p>
+        <p class="footer-note">Real feeds need consent, source checks, expiry dates, cultural care and privacy review before publication.</p>
+      </div>
+    </footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

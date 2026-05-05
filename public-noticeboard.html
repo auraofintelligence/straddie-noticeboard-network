@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="public_noticeboard.md as the public publisher and screen contract beside profile.md and aura.md.">
+    <title>public_noticeboard.md | Straddie Noticeboard Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
+        <div class="nav-links static-links"><a href="index.html">Home</a><a href="noticeboard/public_noticeboard.md">Open markdown</a><a href="index.html#agents">Agents</a><a href="index.html#devices">Devices</a></div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="category-hero">
+        <p class="eyebrow">Plain file layer</p>
+        <h1>public_noticeboard.md</h1>
+        <p class="hero-lede">A public publisher and screen contract that sits beside `profile.md` and `aura.md` without leaking private context into public displays.</p>
+      </section>
+      <section class="section two-col">
+        <article class="source-panel">
+          <p class="eyebrow">How the three files relate</p>
+          <h2>Three files, three boundaries.</h2>
+          <div class="relationship-stack">
+            <article>
+              <h3>profile.md</h3>
+              <p>Public civic profile: what a person or contributor chooses to be known for.</p>
+            </article>
+            <article>
+              <h3>aura.md</h3>
+              <p>Private or trusted AI context: preferences, planning, support needs, prompts and deeper personal operating context.</p>
+            </article>
+            <article>
+              <h3>public_noticeboard.md</h3>
+              <p>Public publishing contract: what an entity, person, club or device is allowed to show on public screens.</p>
+            </article>
+          </div>
+        </article>
+        <article class="moonshot-panel">
+          <p class="eyebrow">Rule</p>
+          <h2>Public screens get public truth only.</h2>
+          <p>`public_noticeboard.md` can link to an approved `profile.md`, but it must not pull from `aura.md` unless a human deliberately copies a safe public fragment across.</p>
+        </article>
+      </section>
+      <section class="section wide visual-band">
+        <div class="section-heading">
+          <p class="eyebrow">Schema</p>
+          <h2>Starter markdown file.</h2>
+          <p>This is the proposed file shape for a publisher, venue, artist, club, event, service or device location.</p>
+        </div>
+        <article class="md-card schema-card">
+          <h3>public_noticeboard.md</h3>
+          <pre><code>---
+schema: public_noticeboard.v0
+publisher_name: Point Lookout Fishing Club
+publisher_type: club
+public_profile: profiles/plfc/profile.md
+private_aura: not_public
+approval_owner: secretary
+device_location_ids:
+  - plfc-wall-01
+  - point-lookout-counter-01
+theme_preferences:
+  local:
+    - junior-sport-week
+    - storm-and-fire-ready
+    - whale-season
+  global:
+    - world-water-day
+    - world-environment-day
+screen_targets:
+  - wall_16x9
+  - wide_leaderboard
+  - phone_story
+allowed_notice_types:
+  - event
+  - safety_note
+  - sponsor_thanks
+  - public_results
+  - volunteer_call
+must_not_publish:
+  - private member records
+  - exact fishing GPS
+  - private payments
+  - emergency contacts
+  - unapproved photos
+  - private aura.md material
+review_rhythm: monthly
+last_reviewed: TODO
+---
+
+# Public Noticeboard Contract
+
+## What we want to publish
+
+- Competition dates
+- Junior clinics
+- Public-safe catch summaries
+- Sponsor thanks
+- Safety reminders
+- Volunteer call-outs
+
+## Questions still needing real answers
+
+- Who approves each notice type?
+- Which devices should receive each notice?
+- Which themes fit our values each quarter?
+- Which assets are approved for public screens?
+- What must expire automatically?</code></pre>
+        </article>
+      </section>
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Agent flow</p>
+          <h2>How this talks to Ready S.E.T. media.</h2>
+        </div>
+        <div class="agent-grid">
+          <article class="agent-card"><p class="eyebrow">1</p><h3>Read publisher contract</h3><p>The agent loads `public_noticeboard.md` first, so it knows the publisher, allowed notice types, themes and device IDs.</p></article>
+          <article class="agent-card"><p class="eyebrow">2</p><h3>Draft a notice</h3><p>The agent turns a voice note, flyer, email or photo folder into a draft `.md` notice with missing-data questions.</p></article>
+          <article class="agent-card"><p class="eyebrow">3</p><h3>Gate and render</h3><p>The privacy gate checks the draft, then the render agent adapts it for the approved device locations.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-copy"><p>public_noticeboard.md is the public publishing layer, not the private Aura layer.</p><p class="footer-note">Inspired by the SBT profile and aura builder pattern: useful Markdown, locally held, human-approved.</p></div></footer>
+  </body>
+</html>

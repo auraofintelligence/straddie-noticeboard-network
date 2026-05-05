@@ -1,0 +1,193 @@
+(function () {
+  const data = window.NOTICEBOARD_DATA;
+
+  function make(tag, className, text) {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function renderBasics() {
+    document.querySelector('[data-project-deck]').textContent = data.project.deck;
+    document.querySelector('[data-project-source]').textContent = 'Source brief: ' + data.project.source;
+    document.querySelector('[data-boundary]').textContent = data.project.boundary;
+    document.querySelector('[data-entity-count]').textContent = data.project.entityCount;
+
+    const principles = document.querySelector('[data-principles]');
+    data.project.principles.forEach((item) => principles.appendChild(make('li', '', item)));
+  }
+
+  function renderPipeline() {
+    const mount = document.querySelector('[data-pipeline]');
+    data.pipeline.forEach((step, index) => {
+      const card = make('article', 'notice-step');
+      card.appendChild(make('span', '', String(index + 1).padStart(2, '0')));
+      card.appendChild(make('h3', '', step.name));
+      card.appendChild(make('p', '', step.detail));
+      mount.appendChild(card);
+    });
+  }
+
+  function renderScreens() {
+    const mount = document.querySelector('[data-screens]');
+    data.screenProfiles.forEach((screen) => {
+      const card = make('article', 'screen-card');
+      card.appendChild(make('h3', '', screen.name));
+      card.appendChild(make('p', 'card-meta', screen.shape));
+      card.appendChild(make('p', '', screen.rule));
+      mount.appendChild(card);
+    });
+  }
+
+  function renderEntities() {
+    const tabs = document.querySelector('[data-entity-tabs]');
+    const detail = document.querySelector('[data-entity-detail]');
+
+    data.entityGroups.forEach((group, index) => {
+      const button = make('button', 'entity-tab', group.label);
+      button.type = 'button';
+      button.addEventListener('click', () => setGroup(index));
+      tabs.appendChild(button);
+    });
+
+    function setGroup(index) {
+      const group = data.entityGroups[index];
+      [...tabs.children].forEach((button) => button.classList.remove('is-active'));
+      tabs.children[index].classList.add('is-active');
+      detail.innerHTML = '';
+      detail.appendChild(make('p', 'eyebrow', group.kind));
+      detail.appendChild(make('h3', '', group.label));
+      detail.appendChild(make('p', '', group.note));
+
+      const list = make('div', 'entity-list');
+      group.entities.forEach((entity) => {
+        const row = make('div', 'entity-row');
+        row.appendChild(make('strong', '', entity.name));
+        row.appendChild(make('span', '', [entity.place, entity.type].filter(Boolean).join(' | ')));
+        row.appendChild(make('p', '', entity.share));
+        list.appendChild(row);
+      });
+      detail.appendChild(list);
+    }
+
+    setGroup(0);
+  }
+
+  function renderCategoryPages() {
+    const mount = document.querySelector('[data-category-pages]');
+    data.project.categoryPages.forEach((category) => {
+      const card = make('article', 'category-card');
+      card.appendChild(make('p', 'eyebrow', category.kind));
+      card.appendChild(make('h3', '', category.label));
+      card.appendChild(make('p', 'card-meta', category.count + ' entity cards'));
+      card.appendChild(make('p', '', category.note));
+      const link = make('a', 'card-link', 'Open category page');
+      link.href = category.href;
+      card.appendChild(link);
+      mount.appendChild(card);
+    });
+  }
+
+  function renderThemes() {
+    const globalMount = document.querySelector('[data-theme-calendar]');
+    const localMount = document.querySelector('[data-local-themes]');
+
+    data.themeCalendar.forEach((theme) => {
+      const card = make('article', 'theme-card');
+      card.appendChild(make('p', 'eyebrow', theme.dateRule));
+      card.appendChild(make('h3', '', theme.title));
+      card.appendChild(make('p', '', theme.prompt));
+      const tags = make('div', 'tag-row');
+      theme.alignments.forEach((tag) => tags.appendChild(make('span', '', tag)));
+      card.appendChild(tags);
+      globalMount.appendChild(card);
+    });
+
+    data.localThemePrompts.forEach((theme) => {
+      const card = make('article', 'theme-card local');
+      card.appendChild(make('p', 'eyebrow', theme.cadence));
+      card.appendChild(make('h3', '', theme.title));
+      card.appendChild(make('p', '', theme.prompt));
+      const tags = make('div', 'tag-row');
+      theme.alignments.forEach((tag) => tags.appendChild(make('span', '', tag)));
+      card.appendChild(tags);
+      localMount.appendChild(card);
+    });
+  }
+
+  function renderAgents() {
+    const mount = document.querySelector('[data-agent-pipelines]');
+    data.agentPipelines.forEach((agent) => {
+      const card = make('article', 'agent-card');
+      card.appendChild(make('p', 'eyebrow', agent.id));
+      card.appendChild(make('h3', '', agent.name));
+      card.appendChild(make('p', '', agent.role));
+
+      const io = make('div', 'io-grid');
+      const inputs = make('div');
+      inputs.appendChild(make('strong', '', 'Inputs'));
+      agent.inputs.forEach((item) => inputs.appendChild(make('span', '', item)));
+      const outputs = make('div');
+      outputs.appendChild(make('strong', '', 'Outputs'));
+      agent.outputs.forEach((item) => outputs.appendChild(make('span', '', item)));
+      io.append(inputs, outputs);
+      card.appendChild(io);
+      mount.appendChild(card);
+    });
+  }
+
+  function renderDevices() {
+    const mount = document.querySelector('[data-device-locations]');
+    data.deviceLocations.forEach((device) => {
+      const card = make('article', 'device-card');
+      card.appendChild(make('p', 'eyebrow', device.id));
+      card.appendChild(make('h3', '', device.label));
+      card.appendChild(make('p', 'card-meta', device.place + ' | ' + device.shape));
+      card.appendChild(make('p', '', device.role));
+      mount.appendChild(card);
+    });
+  }
+
+  function renderMarkdown() {
+    const mount = document.querySelector('[data-markdown-examples]');
+    data.markdownExamples.forEach((example) => {
+      const card = make('article', 'md-card');
+      card.appendChild(make('h3', '', example.title));
+      const pre = make('pre');
+      pre.appendChild(make('code', '', example.code));
+      card.appendChild(pre);
+      mount.appendChild(card);
+    });
+  }
+
+  function renderFiles() {
+    const mount = document.querySelector('[data-file-grid]');
+    [...data.sampleFeeds, ...data.deviceManifests].forEach((file) => {
+      const card = make('a', 'file-card', file);
+      card.href = file;
+      mount.appendChild(card);
+    });
+  }
+
+  function wireNav() {
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
+
+  renderBasics();
+  renderPipeline();
+  renderScreens();
+  renderThemes();
+  renderCategoryPages();
+  renderEntities();
+  renderAgents();
+  renderDevices();
+  renderMarkdown();
+  renderFiles();
+  wireNav();
+})();
