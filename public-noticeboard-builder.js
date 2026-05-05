@@ -7,9 +7,7 @@
   const copyButton = document.querySelector("[data-copy-public-noticeboard]");
   const downloadButton = document.querySelector("[data-download-public-noticeboard]");
   const clearButton = document.querySelector("[data-clear-public-noticeboard]");
-  const categorySelect = document.querySelector("[data-category-select]");
   const newCategoryField = document.querySelector("[data-new-category-field]");
-  const categoryHint = document.querySelector("[data-category-hint]");
   const exclusionsList = document.querySelector("[data-default-exclusions]");
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
@@ -57,37 +55,6 @@
     ["ticker", "Ticker strip"],
     ["offline_fallback", "Offline text fallback"]
   ];
-
-  const categoryHints = {
-    "hospitality-and-retail": {
-      focus: "Search for daily usefulness: opening changes, specials, live music, bookings, stock, waste, food safety, local producers and visitor load.",
-      questions: "Which updates already exist somewhere public? What changes often? Who checks the wording before a busy weekend?"
-    },
-    "trades-and-services": {
-      focus: "Search for practical availability: service areas, repair windows, weather delays, call-out limits, apprenticeships, useful tips and community work.",
-      questions: "What can be public without creating too many calls? What should be seasonal? What is only for existing customers?"
-    },
-    "tourism-property-and-transport": {
-      focus: "Search for visitor movement: tour times, booking pathways, ferry or weather pressure, open homes, respectful behaviour and accessibility.",
-      questions: "What reduces confusion? What needs official source checking? What should expire quickly?"
-    },
-    "community-safety-and-sport": {
-      focus: "Search for coordination needs: training, fixtures, safety notes, volunteer calls, facility status, fundraising, sponsor thanks and public meetings.",
-      questions: "Who approves alerts? Which notices are public, member-only or emergency-only? What must stay off the screen?"
-    },
-    events: {
-      focus: "Search for calendar rhythm: date, place, tickets, run sheets, weather plans, volunteers, accessibility, transport and post-event memory.",
-      questions: "What is confirmed? What is draft? Who owns updates on the day?"
-    },
-    "artists-and-creative-hubs": {
-      focus: "Search for creative visibility: studio openings, workshops, exhibition windows, artist statements, available works, accessibility and collaborations.",
-      questions: "What is public portfolio material? What needs artist consent? What should link back to the artist rather than live on a screen?"
-    },
-    "request-new-category": {
-      focus: "Name the missing category in plain language. The goal is to learn what the island actually needs, not force everyone into the first six buckets.",
-      questions: "Who belongs in this category? What public data would help them? What should the builder ask next?"
-    }
-  };
 
   function slugify(value) {
     return String(value || "example")
@@ -213,15 +180,8 @@
     }, 2800);
   }
 
-  function updateCategoryHint() {
-    const state = getState();
-    const hint = categoryHints[state.category];
-    newCategoryField.classList.toggle("is-hidden", state.category !== "request-new-category");
-    if (!hint) {
-      categoryHint.innerHTML = "<h3>Category search notes will appear here.</h3><p>Select the closest category in Part A. This box will show common public data ideas and questions for that kind of entity.</p>";
-      return;
-    }
-    categoryHint.innerHTML = "<h3>" + getCategoryLabel(state.category, state.requested_category) + "</h3><p>" + hint.focus + "</p><p class=\"hint-question\">" + hint.questions + "</p>";
+  function updateConditionalFields() {
+    newCategoryField.classList.toggle("is-hidden", fieldValue("category") !== "request-new-category");
   }
 
   function buildMarkdown(state) {
@@ -313,7 +273,7 @@
     renderCheckboxGroup("theme_families", themeFamilyOptions, state.theme_families || []);
     renderCheckboxGroup("screen_targets", screenOptions, state.screen_targets || []);
     renderDefaultExclusions();
-    updateCategoryHint();
+    updateConditionalFields();
     output.value = buildMarkdown(getState());
   }
 
@@ -343,13 +303,13 @@
   }
 
   form.addEventListener("input", () => {
-    updateCategoryHint();
+    updateConditionalFields();
     saveState();
     output.value = buildMarkdown(getState());
   });
 
   form.addEventListener("change", () => {
-    updateCategoryHint();
+    updateConditionalFields();
     saveState();
     output.value = buildMarkdown(getState());
   });
