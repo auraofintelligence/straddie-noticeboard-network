@@ -168,12 +168,19 @@ p { margin: 0; overflow-wrap: anywhere; }
   .theme-layout { grid-template-columns: 1fr; }
 }
 @media (max-width: 620px) {
-  .category-hero, .hero-inner, .section, .site-footer { max-width: 100vw; width: 100%; }
-  .category-hero { max-width: 20rem; }
-  .builder-form, .output-panel { margin-left: auto; margin-right: auto; max-width: 17.5rem; width: 100%; }
+  .category-hero, .hero-inner, .section, .site-footer { max-width: 100vw; padding-left: 1rem; padding-right: 1rem; width: 100%; }
+  .category-hero { padding-bottom: 2.25rem; padding-top: 3.25rem; }
+  .section.builder-layout { padding-top: 2.25rem; }
+  .builder-form, .output-panel { margin-left: auto; margin-right: auto; max-width: 100%; padding: .85rem; width: 100%; }
+  .builder-form fieldset { gap: .75rem; padding: .85rem; }
   .hero-inner { min-height: auto; padding-bottom: 4rem; padding-top: 4rem; }
-  h1 { font-size: clamp(2.55rem, 11vw, 3.2rem); }
-  .hero-lede { max-width: 17.5rem; }
+  h1 { font-size: clamp(2.35rem, 9.5vw, 2.75rem); }
+  .category-hero h1 { max-width: 11ch; }
+  .hero-lede { font-size: 1.05rem; max-width: none; }
+  .hero-actions { gap: .65rem; margin-top: 1.35rem; }
+  .builder-form label, .output-panel > label, .field-group > p { font-size: .9rem; }
+  .builder-form input, .builder-form textarea, .builder-form select, .markdown-output { padding: .68rem .72rem; }
+  .option-grid label { padding: .64rem .68rem; }
   .notice-pipeline, .screen-grid, .md-examples, .file-grid, .category-grid, .theme-grid, .agent-grid, .device-grid, .entity-card-grid, .io-grid { grid-template-columns: 1fr; }
   .option-grid, .option-grid.compact { grid-template-columns: 1fr; }
   .exclusion-panel ul { columns: 1; }
