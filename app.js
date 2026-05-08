@@ -73,6 +73,7 @@
         const row = make('div', 'entity-row');
         row.appendChild(make('strong', '', entity.name));
         row.appendChild(make('span', '', [entity.place, entity.type].filter(Boolean).join(' | ')));
+        if (entity.status) row.appendChild(make('p', 'status-pill compact-status', entity.status));
         row.appendChild(make('p', '', entity.share));
         list.appendChild(row);
       });
@@ -194,6 +195,40 @@
     });
   }
 
+  function normaliseNav() {
+    const links = document.querySelector('.nav-links');
+    const nav = document.querySelector('.nav');
+    if (!links || !nav) return;
+    const inCategory = document.body.dataset.category || location.pathname.includes('/categories/');
+    const prefix = inCategory ? '../' : '';
+    const items = [
+      ['Home', prefix + 'index.html'],
+      ['Categories', prefix + 'categories/index.html'],
+      ['Entities', prefix + 'entities.html'],
+      ['Pipeline', prefix + 'index.html#pipeline'],
+      ['Themes', prefix + 'index.html#themes'],
+      ['Agents', prefix + 'index.html#agents'],
+      ['Builder', prefix + 'public-noticeboard-builder.html'],
+      ['Assets', 'https://auraofintelligence.github.io/straddie-content-assets-kit/'],
+      ['public_noticeboard.md', prefix + 'public-noticeboard.html']
+    ];
+    links.classList.remove('static-links');
+    links.innerHTML = '';
+    items.forEach(([label, href]) => {
+      const link = make('a', '', label);
+      link.href = href;
+      links.appendChild(link);
+    });
+    if (!nav.querySelector('.nav-toggle')) {
+      const toggle = make('button', 'nav-toggle');
+      toggle.type = 'button';
+      toggle.setAttribute('aria-label', 'Open menu');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.append(make('span'), make('span'), make('span'));
+      nav.insertBefore(toggle, links);
+    }
+  }
+
   renderBasics();
   renderPipeline();
   renderScreens();
@@ -204,5 +239,6 @@
   renderDevices();
   renderMarkdown();
   renderFiles();
+  normaliseNav();
   wireNav();
 })();

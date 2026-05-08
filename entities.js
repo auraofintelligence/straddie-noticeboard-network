@@ -239,6 +239,7 @@
       row.appendChild(make('strong', '', entity.name));
       row.appendChild(make('span', '', [entity.place, entity.type].filter(Boolean).join(' | ')));
       const body = make('div');
+      if (entity.status) body.appendChild(make('p', 'status-pill compact-status', entity.status));
       body.appendChild(make('p', '', entity.share));
       const category = make('a', 'card-link compact-link', entity.category);
       category.href = 'categories/' + entity.categorySlug + '.html';

@@ -5,7 +5,7 @@ window.NOTICEBOARD_DATA = {
     "deck": "A neutral publishing pipeline where each island business, artist, club or service keeps its own look and feel while simple .md files carry public-safe data to screens of different sizes and shapes.",
     "source": "Stradbroke Island Research Project.pdf plus Strange but True ledger, Ready S.E.T. media and disaster kiosk references",
     "status": "prototype",
-    "entityCount": 159,
+    "entityCount": 162,
     "principles": [
       "The network is not one visual style. Each entity can design its own screen skin, art treatment, typography, colours and voice around a shared data shape.",
       "The boring centre is a simple .md file with frontmatter: who posted it, what type of notice it is, where it should appear, when it expires, and which local assets can be used.",
@@ -38,7 +38,7 @@ window.NOTICEBOARD_DATA = {
         "slug": "hospitality-and-retail",
         "label": "Food, drink, shops and island supplies",
         "kind": "Daily essentials and visitor-facing trade",
-        "count": 25,
+        "count": 28,
         "note": "Likely public data: opening hours, stock notes, specials, meal times, cellar or tasting windows, local produce, donation days, responsible-service notes and visitor load signals.",
         "href": "categories/hospitality-and-retail.html"
       },
@@ -250,9 +250,78 @@ window.NOTICEBOARD_DATA = {
         },
         {
           "name": "Rufus King Seafoods",
-          "type": "Seafood retail",
+          "type": "Closed seafood retail",
           "place": "Amity Point",
-          "share": "fresh catch windows, seafood availability, safe storage reminders"
+          "status": "closed / archive only",
+          "share": "closed listing and local correction; keep only as an archive note unless a new owner confirms re-opening",
+          "profile": {
+            "business_profile_id": "rufus-king-seafoods",
+            "public_name": "Rufus King Seafoods Amity Point",
+            "public_status": "closed / archive only",
+            "address": "44 Sovereign Road, Amity QLD 4183",
+            "phone": "(07) 3409 7224",
+            "website": "http://www.rufuskingseafoods.com.au",
+            "source_notes": [
+              "Tripadvisor and MapQuest list Rufus King Seafoods Amity Point as closed.",
+              "Some older seafood/product pages still describe trading hours, so any reactivation needs direct confirmation before publishing."
+            ],
+            "sources": [
+              "https://www.tripadvisor.com.au/Restaurant_Review-g2687975-d7022879-Reviews-Rufus_King_Seafoods_Amity_Point-Amity_North_Stradbroke_Island_Redland_City_Brisb.html",
+              "https://www.mapquest.com/au/queensland/rufus-king-seafoods-amity-point-523474648"
+            ]
+          }
+        },
+        {
+          "name": "Bo Beans Coffee",
+          "type": "Coffee and cafe",
+          "place": "Amity Point",
+          "status": "public source found",
+          "share": "coffee hours, menu notes, community hub updates, local happenings, accessibility notes",
+          "profile": {
+            "business_profile_id": "bo-beans-coffee",
+            "public_name": "Bo Beans Coffee",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "21 Ballow Street, Amity Point QLD 4183",
+            "phone": "0437 281 881",
+            "email": "bobeanscoffee@gmail.com",
+            "website": "https://www.bobeanscoffee.com.au/",
+            "hours_public_note": "Website/contact pages and Stradbroke Island listing describe morning coffee trading; confirm current hours before publishing.",
+            "source_notes": [
+              "Official site says Bo Beans is at 21 Ballow Street, Amity Point.",
+              "Tourism listing describes coffee, local relationships, accessibility, food/drink and community connection."
+            ],
+            "sources": [
+              "https://www.bobeanscoffee.com.au/about",
+              "https://stradbrokeisland.com/bo-beans-coffee/"
+            ]
+          }
+        },
+        {
+          "name": "The Amity Pavilion",
+          "type": "Pub, restaurant and community venue",
+          "place": "Amity Point",
+          "status": "public source found",
+          "share": "venue hours, food and drink notices, walk-in dining, live or community event updates, seasonal closure notes",
+          "profile": {
+            "business_profile_id": "the-amity-pavilion",
+            "public_name": "The Amity Pavilion",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "21 Ballow St, Amity QLD 4183",
+            "phone": "(07) 3472 7440",
+            "email": "info@amitypavilion.com.au",
+            "website": "https://amitypavilion.com.au/",
+            "abn": "48 684 345 524",
+            "registered_entity": "TOOMEY FALCONER PTY LTD",
+            "hours_public_note": "Website says no reservations required and lists summer venue/kitchen hours; confirm current weekly hours before screen publishing.",
+            "source_notes": [
+              "Official site lists venue, location, contact and seasonal hours.",
+              "ABN Lookup shows business names Amity Pavilion and Amity Tavern North Stradbroke Island current from 23 Jul 2025."
+            ],
+            "sources": [
+              "https://amitypavilion.com.au/",
+              "https://abr.business.gov.au/ABN/View?id=48684345524"
+            ]
+          }
         },
         {
           "name": "Stradbroke Island Foodworks",
@@ -264,7 +333,49 @@ window.NOTICEBOARD_DATA = {
           "name": "Amity Point General Store",
           "type": "Grocery",
           "place": "Amity Point",
-          "share": "daily essentials, parcel notes, community messages, local specials"
+          "status": "public source found",
+          "share": "daily essentials, fuel, parcel notes, grocery stock, bait and tackle, community messages, local specials",
+          "profile": {
+            "business_profile_id": "amity-point-general-dealers",
+            "public_name": "Amity Point General Dealers",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "9 Ballow Street, Amity Point QLD 4183",
+            "phone": "(07) 3409 7212",
+            "abn": "58 375 193 894",
+            "hours_public_note": "Public directory listings commonly show 6:30am-6:00pm, seven days; confirm before publishing.",
+            "source_notes": [
+              "Stradbroke Island listing describes groceries, fuel, bait, tackle, newspapers, hot food, drinks and camping supplies.",
+              "Yellow Pages listing gives ABN and regular hours."
+            ],
+            "sources": [
+              "https://stradbrokeisland.com/amity-point-general-dealers/",
+              "https://www.yellowpages.com.au/amity-qld/bpp/amity-point-general-dealers-580783109"
+            ]
+          }
+        },
+        {
+          "name": "Australia Post Amity Point LPO",
+          "type": "Postal and parcel service",
+          "place": "Amity Point",
+          "status": "public source found",
+          "share": "post office hours, parcel collection notes, PO box reminders, service disruption notices, public holiday closures",
+          "profile": {
+            "business_profile_id": "australia-post-amity-point-lpo",
+            "public_name": "Australia Post Amity Point LPO",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "9A Ballow Street, Amity QLD 4183",
+            "phone": "(07) 3409 7220",
+            "website": "https://auspost.com.au/locate/post-office/qld/amity/4183/amity-point-lpo-432903",
+            "hours_public_note": "Third-party post-office directories list weekday trading and weekend closure; confirm against AusPost before publishing.",
+            "source_notes": [
+              "Business Recycling includes an AusPost locate URL for Amity Point LPO at 9A Ballow Street.",
+              "Post office directories list parcel, PO box, Bank@Post and identity/document services, but current service availability should be verified."
+            ],
+            "sources": [
+              "https://businessrecycling.com.au/business/7897",
+              "https://www.postopeninghours.com/Post%20Office%20Amity%20Point%20LPO%20%28QLD%29/4183/Amity/qXrmHrWi9jdgTO0p"
+            ]
+          }
         },
         {
           "name": "Spar Express Dunwich",
@@ -414,9 +525,25 @@ window.NOTICEBOARD_DATA = {
         },
         {
           "name": "Amity Point Progress Association",
-          "type": "Community advocacy",
+          "type": "Closed community advocacy group",
           "place": "Amity Point",
-          "share": "meetings, local works, coastal adaptation updates, community notices"
+          "status": "closed / archive only",
+          "share": "ABN cancelled from 10 Oct 2024; keep as historical context only unless a successor group confirms public notices",
+          "profile": {
+            "business_profile_id": "amity-point-progress-association",
+            "public_name": "Amity Point Progress Association Inc",
+            "public_status": "closed / archive only",
+            "abn": "31 108 354 328",
+            "registered_entity": "AMITY POINT PROGRESS ASSOCIATION INC",
+            "source_notes": [
+              "ABN Lookup shows ABN status cancelled from 10 Oct 2024.",
+              "Older council and heritage sources remain useful historical context, not current publishing approval."
+            ],
+            "sources": [
+              "https://abr.business.gov.au/ABN/View?abn=31108354328",
+              "https://www.redland.qld.gov.au/files/4dcd54d5-16ad-4779-a484-789d4a6b9864/Heritage_Card_31__Amity_Point_Public_Hall.pdf"
+            ]
+          }
         },
         {
           "name": "Lighthouse Community Church",

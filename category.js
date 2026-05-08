@@ -99,6 +99,49 @@
       entity.share + '\n';
   }
 
+  function yamlList(items, indent) {
+    if (!items || !items.length) return indent + '- TODO\n';
+    return items.map((item) => indent + '- ' + item).join('\n') + '\n';
+  }
+
+  function businessProfileMarkdown(entity, group) {
+    const profile = entity.profile || {};
+    const status = entity.status || profile.public_status || 'needs direct confirmation';
+    return '---\n' +
+      'schema: business_profile.v0\n' +
+      'business_profile_id: ' + (profile.business_profile_id || slugify(entity.name)) + '\n' +
+      'public_name: ' + (profile.public_name || entity.name) + '\n' +
+      'category: ' + group.label + '\n' +
+      'place: ' + entity.place + '\n' +
+      'status: ' + status + '\n' +
+      'abn: ' + (profile.abn || 'TODO') + '\n' +
+      'registered_entity: ' + (profile.registered_entity || 'TODO') + '\n' +
+      'website: ' + (profile.website || 'TODO') + '\n' +
+      'public_phone: ' + (profile.phone || 'TODO') + '\n' +
+      'public_email: ' + (profile.email || 'TODO') + '\n' +
+      'public_address: ' + (profile.address || entity.place || 'TODO') + '\n' +
+      'hours_public_note: ' + (profile.hours_public_note || 'TODO - confirm current public hours before publishing') + '\n' +
+      'allowed_notice_types:\n' +
+      '  - opening_hours\n' +
+      '  - public_update\n' +
+      '  - event_or_special\n' +
+      'must_not_publish:\n' +
+      '  - private staff, member, client or customer records\n' +
+      '  - private payment, account or access details\n' +
+      '  - exact sensitive locations or unapproved photos\n' +
+      'source_notes:\n' +
+      yamlList(profile.source_notes, '  ') +
+      'sources:\n' +
+      yamlList(profile.sources, '  ') +
+      'questions_still_open:\n' +
+      '  - Who approves this profile before it becomes public?\n' +
+      '  - Which notices should expire daily, weekly or monthly?\n' +
+      "  - Which screen locations should receive this entity's notices?\n" +
+      '---\n\n' +
+      '# ' + (profile.public_name || entity.name) + '\n\n' +
+      'Supposed public noticeboard role: ' + entity.share + '\n';
+  }
+
   function renderSharedQuestions() {
     const mount = document.querySelector('[data-category-questions]');
     if (!mount) return;
@@ -249,6 +292,7 @@
       card.appendChild(make('p', 'eyebrow', entity.type));
       card.appendChild(make('h3', '', entity.name));
       card.appendChild(make('p', 'card-meta', entity.place));
+      if (entity.status) card.appendChild(make('p', 'status-pill', entity.status));
       card.appendChild(make('p', '', 'Supposed public data: ' + entity.share));
 
       if (state.mode === 'advanced') {
@@ -264,6 +308,12 @@
       pre.appendChild(make('code', '', exampleMarkdown(entity, group)));
       details.appendChild(pre);
       card.appendChild(details);
+      const profileDetails = make('details', 'md-details');
+      profileDetails.appendChild(make('summary', '', 'Draft business_profile.md'));
+      const profilePre = make('pre', 'entity-md');
+      profilePre.appendChild(make('code', '', businessProfileMarkdown(entity, group)));
+      profileDetails.appendChild(profilePre);
+      card.appendChild(profileDetails);
       mount.appendChild(card);
     });
 
