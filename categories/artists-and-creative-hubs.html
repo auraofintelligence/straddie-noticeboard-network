@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Artists and creative hubs entity cards for the Straddie Noticeboard Network.">
-    <title>Artists and creative hubs | Straddie Noticeboard Network</title>
+    <meta name="description" content="Artists, makers and creative hubs entity cards for the Straddie Noticeboard Network.">
+    <title>Artists, makers and creative hubs | Straddie Noticeboard Network</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
@@ -37,8 +37,10 @@
         <div class="section-heading">
           <p class="eyebrow">Entity cards</p>
           <h2>Example data and discovery questions.</h2>
-          <p>These cards show a starter markdown shape for each entity. The shared discovery questions sit once below, then apply across the whole category.</p>
+          <p>Basic sorting keeps this readable. Advanced sorting opens search and compact keyword filters for power users.</p>
         </div>
+        <div data-entity-controls></div>
+        <p class="result-count" data-result-count></p>
         <aside class="question-panel">
           <p class="eyebrow">Discovery questions</p>
           <h3>Ask once, then apply to each entity.</h3>
@@ -47,8 +49,9 @@
         <div class="entity-card-grid" data-category-cards></div>
       </section>
     </main>
-    <footer class="site-footer"><div class="footer-copy"><p>Standalone category page for the Straddie Noticeboard Network.</p><p class="footer-note">All entity data is guessed until the entity approves it.</p></div></footer>
+    <footer class="site-footer"><div class="footer-copy"><p>Category page for the Straddie Noticeboard Network.</p><p class="footer-note">All entity data is guessed until the entity approves it.</p></div></footer>
     <script src="../data.js"></script>
     <script src="../category.js"></script>
+    <script src="../app.js"></script>
   </body>
 </html>

@@ -5,7 +5,7 @@ window.NOTICEBOARD_DATA = {
     "deck": "A neutral publishing pipeline where each island business, artist, club or service keeps its own look and feel while simple .md files carry public-safe data to screens of different sizes and shapes.",
     "source": "Stradbroke Island Research Project.pdf plus Strange but True ledger, Ready S.E.T. media and disaster kiosk references",
     "status": "prototype",
-    "entityCount": 137,
+    "entityCount": 159,
     "principles": [
       "The network is not one visual style. Each entity can design its own screen skin, art treatment, typography, colours and voice around a shared data shape.",
       "The boring centre is a simple .md file with frontmatter: who posted it, what type of notice it is, where it should appear, when it expires, and which local assets can be used.",
@@ -28,51 +28,75 @@ window.NOTICEBOARD_DATA = {
     "categoryPages": [
       {
         "slug": "trades-and-services",
-        "label": "Trades and services",
-        "kind": "Local business directory",
+        "label": "Trades, construction and local services",
+        "kind": "Repairs, builds and local capability",
         "count": 16,
-        "note": "Likely public data: availability windows, service areas, weather delays, apprenticeships, emergency repair capacity, sponsor notes and completed community work.",
+        "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
         "href": "categories/trades-and-services.html"
       },
       {
         "slug": "hospitality-and-retail",
-        "label": "Hospitality and retail",
-        "kind": "Daily island signal",
-        "count": 26,
-        "note": "Likely public data: opening hours, specials, live music, stock notes, local produce, visitor load, booking links, food safety, fundraising and event timing.",
+        "label": "Food, drink, shops and island supplies",
+        "kind": "Daily essentials and visitor-facing trade",
+        "count": 25,
+        "note": "Likely public data: opening hours, stock notes, specials, meal times, cellar or tasting windows, local produce, donation days, responsible-service notes and visitor load signals.",
         "href": "categories/hospitality-and-retail.html"
       },
       {
         "slug": "tourism-property-and-transport",
-        "label": "Tourism, property and transport",
-        "kind": "Visitor and movement layer",
+        "label": "Tourism, property, charters and transport",
+        "kind": "Visitor movement and booking layer",
         "count": 7,
-        "note": "Likely public data: tour times, cultural booking pathways, surf-school sessions, ferry load, real estate open homes, event logistics and visitor pressure signals.",
+        "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
         "href": "categories/tourism-property-and-transport.html"
       },
       {
-        "slug": "community-safety-and-sport",
-        "label": "Community, safety and sport",
-        "kind": "Civic coordination layer",
-        "count": 33,
-        "note": "Likely public data: volunteer rosters, safety alerts, training days, fundraising, club events, conservation work, facility status and meeting notices.",
-        "href": "categories/community-safety-and-sport.html"
+        "slug": "civic-care-and-community",
+        "label": "Civic, care and community organisations",
+        "kind": "Governance, care, heritage and social support",
+        "count": 13,
+        "note": "Likely public data: meeting dates, community programs, cultural approval pathways, heritage openings, youth opportunities, church or meditation times, grant alerts and verified community messages.",
+        "href": "categories/civic-care-and-community.html"
+      },
+      {
+        "slug": "environment-safety-and-emergency",
+        "label": "Environment, wildlife, safety and emergency",
+        "kind": "Public safety and resilience layer",
+        "count": 8,
+        "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
+        "href": "categories/environment-safety-and-emergency.html"
+      },
+      {
+        "slug": "sport-recreation-and-clubs",
+        "label": "Sport, recreation and clubs",
+        "kind": "Fixtures, facilities and community competition",
+        "count": 10,
+        "note": "Likely public data: fixtures, training times, junior programs, competition results, facility status, club meals, fundraising, working bees and safety reminders.",
+        "href": "categories/sport-recreation-and-clubs.html"
       },
       {
         "slug": "events",
-        "label": "Events",
-        "kind": "Calendar rhythm layer",
-        "count": 13,
-        "note": "Likely public data: dates, locations, ticket links, road or ferry pressure, volunteer calls, weather changes and post-event public memory.",
+        "label": "Events, festivals and markets",
+        "kind": "Calendar rhythm and visitor pressure",
+        "count": 14,
+        "note": "Likely public data: dates, locations, ticket links, set times, stallholder calls, course notes, road or ferry pressure, weather changes, volunteer needs and post-event public memory.",
         "href": "categories/events.html"
       },
       {
         "slug": "artists-and-creative-hubs",
-        "label": "Artists and creative hubs",
-        "kind": "Creative economy layer",
-        "count": 42,
-        "note": "Likely public data: studio openings, workshops, exhibition windows, artist statements, available works, accessibility notes, map pins and collaborative calls.",
+        "label": "Artists, makers and creative hubs",
+        "kind": "Creative economy and cultural expression",
+        "count": 44,
+        "note": "Likely public data: studio openings, workshops, performances, exhibition windows, artist statements, available works, accessibility notes, gallery hours, collaborative calls and public-safe story prompts.",
         "href": "categories/artists-and-creative-hubs.html"
+      },
+      {
+        "slug": "public-figures-and-legacies",
+        "label": "Public figures, legacies and story references",
+        "kind": "Public biography and memory layer",
+        "count": 22,
+        "note": "Likely public data: approved public biography notes, legacy learning, verified event links, library or museum prompts and strict no-private-detail boundaries. These are references, not assumed participants.",
+        "href": "categories/public-figures-and-legacies.html"
       }
     ]
   },
@@ -127,9 +151,10 @@ window.NOTICEBOARD_DATA = {
   ],
   "entityGroups": [
     {
-      "label": "Trades and services",
-      "kind": "Local business directory",
-      "note": "Likely public data: availability windows, service areas, weather delays, apprenticeships, emergency repair capacity, sponsor notes and completed community work.",
+      "label": "Trades, construction and local services",
+      "slug": "trades-and-services",
+      "kind": "Repairs, builds and local capability",
+      "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
       "entities": [
         {
           "name": "Russell Specht Carpentry",
@@ -230,9 +255,10 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Hospitality and retail",
-      "kind": "Daily island signal",
-      "note": "Likely public data: opening hours, specials, live music, stock notes, local produce, visitor load, booking links, food safety, fundraising and event timing.",
+      "label": "Food, drink, shops and island supplies",
+      "slug": "hospitality-and-retail",
+      "kind": "Daily essentials and visitor-facing trade",
+      "note": "Likely public data: opening hours, stock notes, specials, meal times, cellar or tasting windows, local produce, donation days, responsible-service notes and visitor load signals.",
       "entities": [
         {
           "name": "Straddie Brewing Co.",
@@ -275,12 +301,6 @@ window.NOTICEBOARD_DATA = {
           "type": "Seafood retail",
           "place": "Amity Point",
           "share": "fresh catch windows, seafood availability, safe storage reminders"
-        },
-        {
-          "name": "Mal Starkey Seafood and Charters",
-          "type": "Retail and charters",
-          "place": "Minjerribah",
-          "share": "charter availability, weather windows, seafood updates, safety notes"
         },
         {
           "name": "Stradbroke Island Foodworks",
@@ -393,15 +413,16 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Tourism, property and transport",
-      "kind": "Visitor and movement layer",
-      "note": "Likely public data: tour times, cultural booking pathways, surf-school sessions, ferry load, real estate open homes, event logistics and visitor pressure signals.",
+      "label": "Tourism, property, charters and transport",
+      "slug": "tourism-property-and-transport",
+      "kind": "Visitor movement and booking layer",
+      "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
       "entities": [
         {
-          "name": "Stradbroke Island Events",
-          "type": "Event management",
-          "place": "Point Lookout",
-          "share": "event calendars, supplier call-outs, bump-in times, visitor notices"
+          "name": "Mal Starkey Seafood and Charters",
+          "type": "Retail and charters",
+          "place": "Minjerribah",
+          "share": "charter availability, weather windows, seafood updates, safety notes"
         },
         {
           "name": "Discover Stradbroke Real Estate",
@@ -442,9 +463,10 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Community, safety and sport",
-      "kind": "Civic coordination layer",
-      "note": "Likely public data: volunteer rosters, safety alerts, training days, fundraising, club events, conservation work, facility status and meeting notices.",
+      "label": "Civic, care and community organisations",
+      "slug": "civic-care-and-community",
+      "kind": "Governance, care, heritage and social support",
+      "note": "Likely public data: meeting dates, community programs, cultural approval pathways, heritage openings, youth opportunities, church or meditation times, grant alerts and verified community messages.",
       "entities": [
         {
           "name": "Quandamooka Yoolooburrabee Aboriginal Corporation",
@@ -453,52 +475,10 @@ window.NOTICEBOARD_DATA = {
           "share": "public cultural notices, approved event pathways, visitor respect prompts"
         },
         {
-          "name": "Friends of Stradbroke Island",
-          "type": "Environmental advocacy",
-          "place": "Minjerribah",
-          "share": "campaign updates, working bees, environmental education, policy notices"
-        },
-        {
-          "name": "Stradbroke Island Management Organisation",
-          "type": "Environmental and social advocacy",
-          "place": "Point Lookout",
-          "share": "meeting notices, planning updates, water and aquifer education"
-        },
-        {
-          "name": "Wildlife Rescue Minjerribah",
-          "type": "Fauna rescue and care",
-          "place": "Point Lookout",
-          "share": "wildlife alerts, rescue guidance, volunteer needs, hotline reminders"
-        },
-        {
           "name": "Straddie Chamber of Commerce",
           "type": "Business advocacy",
           "place": "Point Lookout",
           "share": "member notices, business workshops, local economy updates, grant alerts"
-        },
-        {
-          "name": "Point Lookout Surf Life Saving Club",
-          "type": "Coastal safety and community hub",
-          "place": "Point Lookout",
-          "share": "patrol status, beach safety, events, volunteer training"
-        },
-        {
-          "name": "Point Lookout Fishing Club",
-          "type": "Fishing and community club",
-          "place": "Point Lookout",
-          "share": "competition dates, public catch ledger, junior clinics, sponsor thanks, safety notes"
-        },
-        {
-          "name": "Straddie Sharks Allsports Rugby League Club",
-          "type": "Sports and social club",
-          "place": "Dunwich",
-          "share": "fixtures, carnival notices, team calls, fundraiser updates"
-        },
-        {
-          "name": "Point Lookout Bowls Club",
-          "type": "Sports and dining",
-          "place": "Point Lookout",
-          "share": "social bowls, meal nights, member events, visitor invitations"
         },
         {
           "name": "North Stradbroke Island Aboriginal and Islander Housing Society",
@@ -525,6 +505,80 @@ window.NOTICEBOARD_DATA = {
           "share": "public talks, community priorities, approved education notices"
         },
         {
+          "name": "Youthlink",
+          "type": "Youth opportunities and recreation",
+          "place": "Minjerribah",
+          "share": "youth activities, mentoring sessions, sport and arts invitations"
+        },
+        {
+          "name": "Amity Point Progress Association",
+          "type": "Community advocacy",
+          "place": "Amity Point",
+          "share": "meetings, local works, coastal adaptation updates, community notices"
+        },
+        {
+          "name": "Lighthouse Community Church",
+          "type": "Religious group",
+          "place": "Dunwich",
+          "share": "service times, community meals, support notices"
+        },
+        {
+          "name": "North Stradbroke Island Buddhist Group",
+          "type": "Spiritual group",
+          "place": "Minjerribah",
+          "share": "meditation times, public talks, retreat notices"
+        },
+        {
+          "name": "St. Peter Chanel Church",
+          "type": "Religious group",
+          "place": "Minjerribah",
+          "share": "service times, parish notices, community support"
+        },
+        {
+          "name": "St. Paul of the Cross Catholic Church",
+          "type": "Religious group",
+          "place": "Minjerribah",
+          "share": "service times, parish events, community care notices"
+        },
+        {
+          "name": "Straddie Island News Facebook Group",
+          "type": "Digital community",
+          "place": "Online",
+          "share": "public-safe story leads, community calls, cross-posted verified notices"
+        }
+      ]
+    },
+    {
+      "label": "Environment, wildlife, safety and emergency",
+      "slug": "environment-safety-and-emergency",
+      "kind": "Public safety and resilience layer",
+      "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
+      "entities": [
+        {
+          "name": "Friends of Stradbroke Island",
+          "type": "Environmental advocacy",
+          "place": "Minjerribah",
+          "share": "campaign updates, working bees, environmental education, policy notices"
+        },
+        {
+          "name": "Stradbroke Island Management Organisation",
+          "type": "Environmental and social advocacy",
+          "place": "Point Lookout",
+          "share": "meeting notices, planning updates, water and aquifer education"
+        },
+        {
+          "name": "Wildlife Rescue Minjerribah",
+          "type": "Fauna rescue and care",
+          "place": "Point Lookout",
+          "share": "wildlife alerts, rescue guidance, volunteer needs, hotline reminders"
+        },
+        {
+          "name": "Point Lookout Surf Life Saving Club",
+          "type": "Coastal safety and community hub",
+          "place": "Point Lookout",
+          "share": "patrol status, beach safety, events, volunteer training"
+        },
+        {
           "name": "Volunteer Marine Rescue North Stradbroke",
           "type": "Emergency maritime services",
           "place": "Dunwich",
@@ -537,12 +591,6 @@ window.NOTICEBOARD_DATA = {
           "share": "fire safety, preparedness days, volunteer call-outs, incident-safe public alerts"
         },
         {
-          "name": "Youthlink",
-          "type": "Youth opportunities and recreation",
-          "place": "Minjerribah",
-          "share": "youth activities, mentoring sessions, sport and arts invitations"
-        },
-        {
           "name": "Point Lookout Bushcare",
           "type": "Invasive weed eradication",
           "place": "Point Lookout",
@@ -553,24 +601,32 @@ window.NOTICEBOARD_DATA = {
           "type": "Fauna care network",
           "place": "Minjerribah",
           "share": "wildlife education, care needs, rescue-safe public guidance"
+        }
+      ]
+    },
+    {
+      "label": "Sport, recreation and clubs",
+      "slug": "sport-recreation-and-clubs",
+      "kind": "Fixtures, facilities and community competition",
+      "note": "Likely public data: fixtures, training times, junior programs, competition results, facility status, club meals, fundraising, working bees and safety reminders.",
+      "entities": [
+        {
+          "name": "Point Lookout Fishing Club",
+          "type": "Fishing and community club",
+          "place": "Point Lookout",
+          "share": "competition dates, public catch ledger, junior clinics, sponsor thanks, safety notes"
         },
         {
-          "name": "Amity Point Progress Association",
-          "type": "Community advocacy",
-          "place": "Amity Point",
-          "share": "meetings, local works, coastal adaptation updates, community notices"
+          "name": "Straddie Sharks Allsports Rugby League Club",
+          "type": "Sports and social club",
+          "place": "Dunwich",
+          "share": "fixtures, carnival notices, team calls, fundraiser updates"
         },
         {
-          "name": "Stradbroke Island Singers",
-          "type": "Arts and choral group",
-          "place": "Minjerribah",
-          "share": "rehearsals, concerts, community singing invitations"
-        },
-        {
-          "name": "Bay Players Theatre Group",
-          "type": "Performing arts",
-          "place": "Dunwich Community Hall",
-          "share": "auditions, shows, rehearsal times, volunteer calls"
+          "name": "Point Lookout Bowls Club",
+          "type": "Sports and dining",
+          "place": "Point Lookout",
+          "share": "social bowls, meal nights, member events, visitor invitations"
         },
         {
           "name": "Amity Point Cricket Club",
@@ -613,44 +669,21 @@ window.NOTICEBOARD_DATA = {
           "type": "Sports",
           "place": "Dunwich",
           "share": "pool status, lesson times, swimming club notices"
-        },
-        {
-          "name": "Lighthouse Community Church",
-          "type": "Religious group",
-          "place": "Dunwich",
-          "share": "service times, community meals, support notices"
-        },
-        {
-          "name": "North Stradbroke Island Buddhist Group",
-          "type": "Spiritual group",
-          "place": "Minjerribah",
-          "share": "meditation times, public talks, retreat notices"
-        },
-        {
-          "name": "St. Peter Chanel Church",
-          "type": "Religious group",
-          "place": "Minjerribah",
-          "share": "service times, parish notices, community support"
-        },
-        {
-          "name": "St. Paul of the Cross Catholic Church",
-          "type": "Religious group",
-          "place": "Minjerribah",
-          "share": "service times, parish events, community care notices"
-        },
-        {
-          "name": "Straddie Island News Facebook Group",
-          "type": "Digital community",
-          "place": "Online",
-          "share": "public-safe story leads, community calls, cross-posted verified notices"
         }
       ]
     },
     {
-      "label": "Events",
-      "kind": "Calendar rhythm layer",
-      "note": "Likely public data: dates, locations, ticket links, road or ferry pressure, volunteer calls, weather changes and post-event public memory.",
+      "label": "Events, festivals and markets",
+      "slug": "events",
+      "kind": "Calendar rhythm and visitor pressure",
+      "note": "Likely public data: dates, locations, ticket links, set times, stallholder calls, course notes, road or ferry pressure, weather changes, volunteer needs and post-event public memory.",
       "entities": [
+        {
+          "name": "Stradbroke Island Events",
+          "type": "Event management",
+          "place": "Point Lookout",
+          "share": "event calendars, supplier call-outs, bump-in times, visitor notices"
+        },
         {
           "name": "Straddie Salute Triathlon",
           "type": "Destination sport",
@@ -732,10 +765,23 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Artists and creative hubs",
-      "kind": "Creative economy layer",
-      "note": "Likely public data: studio openings, workshops, exhibition windows, artist statements, available works, accessibility notes, map pins and collaborative calls.",
+      "label": "Artists, makers and creative hubs",
+      "slug": "artists-and-creative-hubs",
+      "kind": "Creative economy and cultural expression",
+      "note": "Likely public data: studio openings, workshops, performances, exhibition windows, artist statements, available works, accessibility notes, gallery hours, collaborative calls and public-safe story prompts.",
       "entities": [
+        {
+          "name": "Stradbroke Island Singers",
+          "type": "Arts and choral group",
+          "place": "Minjerribah",
+          "share": "rehearsals, concerts, community singing invitations"
+        },
+        {
+          "name": "Bay Players Theatre Group",
+          "type": "Performing arts",
+          "place": "Dunwich Community Hall",
+          "share": "auditions, shows, rehearsal times, volunteer calls"
+        },
         {
           "name": "Kieron Anderson",
           "type": "Food sovereignty and contemporary art",
@@ -987,6 +1033,146 @@ window.NOTICEBOARD_DATA = {
           "type": "Local art and retail studio",
           "place": "Minjerribah",
           "share": "studio hours, product drops, artist features"
+        }
+      ]
+    },
+    {
+      "label": "Public figures, legacies and story references",
+      "slug": "public-figures-and-legacies",
+      "kind": "Public biography and memory layer",
+      "note": "Likely public data: approved public biography notes, legacy learning, verified event links, library or museum prompts and strict no-private-detail boundaries. These are references, not assumed participants.",
+      "entities": [
+        {
+          "name": "Oodgeroo Noonuccal (Kath Walker)",
+          "type": "Literature, education and activism legacy",
+          "place": "Moongalba / Minjerribah",
+          "share": "approved legacy learning dates, public quotations with source permissions, cultural education pathways, memorial events"
+        },
+        {
+          "name": "Jani Haenke",
+          "type": "Environmental advocacy legacy",
+          "place": "Cylinder Beach / Minjerribah",
+          "share": "FOSI-linked legacy notes, conservation milestones, public history prompts, anniversary education"
+        },
+        {
+          "name": "Johannes Jochim (Jack) Borey",
+          "type": "Maritime history legacy",
+          "place": "Minjerribah",
+          "share": "public history references, maritime heritage notes, museum-linked story prompts"
+        },
+        {
+          "name": "Tom Welsby",
+          "type": "History and literature legacy",
+          "place": "Amity Point / Moreton Bay",
+          "share": "historical excerpts with source checks, coastal-change learning, museum and library prompts"
+        },
+        {
+          "name": "Wesley Enoch AM",
+          "type": "Performing arts and cultural leadership",
+          "place": "Minjerribah / Redlands",
+          "share": "public event links, theatre talks, approved biography notes, cultural-program prompts"
+        },
+        {
+          "name": "Delvene Cockatoo-Collins",
+          "type": "Visual arts and design",
+          "place": "Quandamooka Country",
+          "share": "studio openings, public art place-marker learning, approved exhibition notices, design-story links"
+        },
+        {
+          "name": "Ethan Ewing",
+          "type": "Professional surfing",
+          "place": "Minjerribah",
+          "share": "public competition links, junior surf inspiration, local club celebration notes, verified media only"
+        },
+        {
+          "name": "Bede Durbidge",
+          "type": "Professional surfing and coaching",
+          "place": "Minjerribah",
+          "share": "public coaching events, surf-community notes, competition legacy links, verified media only"
+        },
+        {
+          "name": "Matt Burns",
+          "type": "Cultural tourism and education",
+          "place": "Goompi / Dunwich",
+          "share": "approved tour information, cultural respect prompts, public learning sessions, booking pathways"
+        },
+        {
+          "name": "Belinda Close",
+          "type": "Visual arts and public place markers",
+          "place": "Quandamooka Country",
+          "share": "approved public art notes, exhibition links, place-marker learning, cultural permission reminders"
+        },
+        {
+          "name": "Lincoln Lewis",
+          "type": "Film and television",
+          "place": "Redlands / Minjerribah connection",
+          "share": "verified public appearances, fundraiser links, community event mentions, no private residence detail"
+        },
+        {
+          "name": "Karl Stefanovic",
+          "type": "Television and media",
+          "place": "Redlands connection",
+          "share": "verified public media references, disaster-reporting context, community event mentions, no private detail"
+        },
+        {
+          "name": "Peter Stefanovic",
+          "type": "Television and journalism",
+          "place": "Redlands connection",
+          "share": "verified public media references, weather or civic reporting context, public appearances only"
+        },
+        {
+          "name": "Wally Lewis",
+          "type": "Sport and media",
+          "place": "Birkdale / Redlands",
+          "share": "verified public sports legacy notes, civic event links, public appearances only"
+        },
+        {
+          "name": "Natalie Cook OAM",
+          "type": "Sport and civic leadership",
+          "place": "Redlands",
+          "share": "verified public event links, sport participation prompts, civic program mentions"
+        },
+        {
+          "name": "Val Lehman",
+          "type": "Film and television",
+          "place": "Southern Moreton Bay Islands / Redlands",
+          "share": "verified public appearances, arts events, media references only"
+        },
+        {
+          "name": "Jordan Patrick Smith",
+          "type": "Film and television",
+          "place": "Redlands connection",
+          "share": "verified public appearances, arts education prompts, media references only"
+        },
+        {
+          "name": "Rowena Cory Daniells",
+          "type": "Literature",
+          "place": "Redlands",
+          "share": "book talks, library links, writing workshops, verified author events"
+        },
+        {
+          "name": "Marianne de Pierres",
+          "type": "Literature",
+          "place": "Ormiston / Redlands",
+          "share": "book events, speculative-fiction talks, library or festival links, verified author notices"
+        },
+        {
+          "name": "Jesse Williams",
+          "type": "Sport",
+          "place": "Birkdale / Redlands",
+          "share": "verified public sports legacy notes, youth sport inspiration, public appearances only"
+        },
+        {
+          "name": "Paul Bishop",
+          "type": "Politics, television and civic leadership",
+          "place": "Birkdale / Thorneside / Redlands",
+          "share": "public civic notices, arts and community events, official-source references only"
+        },
+        {
+          "name": "Kay Danes",
+          "type": "Literature and humanitarian work",
+          "place": "Wellington Point / Redlands",
+          "share": "book talks, humanitarian campaign links, library events, verified public notices"
         }
       ]
     }
