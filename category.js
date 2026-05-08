@@ -4,6 +4,7 @@
   const state = {
     mode: 'basic',
     sort: 'recommended',
+    place: 'all',
     search: '',
     keywords: new Set()
   };
@@ -44,6 +45,26 @@
       entity.share
     ].flatMap(words);
     return [...new Set(raw)].slice(0, 12);
+  }
+
+  function placeBuckets(entity) {
+    const place = String(entity.place || '').toLowerCase();
+    const buckets = new Set();
+    if (place.includes('amity')) buckets.add('Amity Point');
+    if (place.includes('dunwich') || place.includes('goompi')) buckets.add('Dunwich / Goompi');
+    if (place.includes('point lookout') || place.includes('cylinder beach')) buckets.add('Point Lookout');
+    if (place.includes('one mile')) buckets.add('One Mile');
+    if (place.includes('cleveland')) buckets.add('Cleveland');
+    if (place.includes('online')) buckets.add('Online');
+    if (place.includes('quandamooka')) buckets.add('Quandamooka Country');
+    if (place.includes('redlands') || place.includes('birkdale') || place.includes('ormiston') || place.includes('wellington point') || place.includes('southern moreton bay')) buckets.add('Redlands / mainland');
+    if (place.includes('minjerribah') || place.includes('island-wide') || place.includes('moongalba')) buckets.add('Minjerribah / island-wide');
+    if (!buckets.size && entity.place) buckets.add(entity.place);
+    return [...buckets];
+  }
+
+  function allPlaces(group) {
+    return [...new Set(group.entities.flatMap(placeBuckets))].sort((a, b) => a.localeCompare(b));
   }
 
   function allKeywords(group) {
@@ -108,9 +129,10 @@
       .filter((entity) => {
         const haystack = [entity.name, entity.type, entity.place, entity.share, group.label].join(' ').toLowerCase();
         const matchesSearch = !needle || haystack.includes(needle);
+        const matchesPlace = state.place === 'all' || placeBuckets(entity).includes(state.place);
         const keywords = entityKeywords(entity, group);
         const matchesKeywords = !state.keywords.size || [...state.keywords].every((keyword) => keywords.includes(keyword));
-        return matchesSearch && matchesKeywords;
+        return matchesSearch && matchesPlace && matchesKeywords;
       });
   }
 
@@ -160,6 +182,25 @@
     });
     sortLabel.appendChild(select);
     panel.appendChild(sortLabel);
+
+    const placeLabel = make('label', 'sort-label', 'Place filter');
+    const placeSelect = make('select');
+    const allPlacesOption = make('option', '', 'All places');
+    allPlacesOption.value = 'all';
+    allPlacesOption.selected = state.place === 'all';
+    placeSelect.appendChild(allPlacesOption);
+    allPlaces(group).forEach((place) => {
+      const option = make('option', '', place);
+      option.value = place;
+      option.selected = state.place === place;
+      placeSelect.appendChild(option);
+    });
+    placeSelect.addEventListener('change', () => {
+      state.place = placeSelect.value;
+      renderCards(group);
+    });
+    placeLabel.appendChild(placeSelect);
+    panel.appendChild(placeLabel);
 
     if (state.mode === 'advanced') {
       const searchLabel = make('label', 'sort-label', 'Search this category');
@@ -212,6 +253,7 @@
 
       if (state.mode === 'advanced') {
         const tags = make('div', 'tag-row entity-tags');
+        placeBuckets(entity).forEach((place) => tags.appendChild(make('span', '', place)));
         entityKeywords(entity, group).slice(0, 8).forEach((tag) => tags.appendChild(make('span', '', tag)));
         card.appendChild(tags);
       }
@@ -228,7 +270,7 @@
     if (!entities.length) {
       const empty = make('article', 'entity-card empty-card');
       empty.appendChild(make('h3', '', 'No matches yet'));
-      empty.appendChild(make('p', '', 'Clear the search or keyword filters to widen the view.'));
+      empty.appendChild(make('p', '', 'Clear the search, place or keyword filters to widen the view.'));
       mount.appendChild(empty);
     }
   }

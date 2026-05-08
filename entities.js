@@ -4,6 +4,7 @@
     mode: 'basic',
     sort: 'category',
     category: 'all',
+    place: 'all',
     search: '',
     keywords: new Set()
   };
@@ -52,6 +53,26 @@
     ].flatMap(words))].slice(0, 12);
   }
 
+  function placeBuckets(entity) {
+    const place = String(entity.place || '').toLowerCase();
+    const buckets = new Set();
+    if (place.includes('amity')) buckets.add('Amity Point');
+    if (place.includes('dunwich') || place.includes('goompi')) buckets.add('Dunwich / Goompi');
+    if (place.includes('point lookout') || place.includes('cylinder beach')) buckets.add('Point Lookout');
+    if (place.includes('one mile')) buckets.add('One Mile');
+    if (place.includes('cleveland')) buckets.add('Cleveland');
+    if (place.includes('online')) buckets.add('Online');
+    if (place.includes('quandamooka')) buckets.add('Quandamooka Country');
+    if (place.includes('redlands') || place.includes('birkdale') || place.includes('ormiston') || place.includes('wellington point') || place.includes('southern moreton bay')) buckets.add('Redlands / mainland');
+    if (place.includes('minjerribah') || place.includes('island-wide') || place.includes('moongalba')) buckets.add('Minjerribah / island-wide');
+    if (!buckets.size && entity.place) buckets.add(entity.place);
+    return [...buckets];
+  }
+
+  function allPlaces() {
+    return [...new Set(entities.flatMap(placeBuckets))].sort((a, b) => a.localeCompare(b));
+  }
+
   function allKeywords() {
     const counts = new Map();
     entities.forEach((entity) => {
@@ -69,11 +90,12 @@
     const needle = state.search.trim().toLowerCase();
     return entities.filter((entity) => {
       const categoryMatch = state.category === 'all' || entity.categorySlug === state.category;
+      const placeMatch = state.place === 'all' || placeBuckets(entity).includes(state.place);
       const haystack = [entity.name, entity.type, entity.place, entity.share, entity.category].join(' ').toLowerCase();
       const searchMatch = !needle || haystack.includes(needle);
       const keywords = entityKeywords(entity);
       const keywordMatch = !state.keywords.size || [...state.keywords].every((keyword) => keywords.includes(keyword));
-      return categoryMatch && searchMatch && keywordMatch;
+      return categoryMatch && placeMatch && searchMatch && keywordMatch;
     });
   }
 
@@ -131,12 +153,31 @@
     categoryLabel.appendChild(categorySelect);
     panel.appendChild(categoryLabel);
 
+    const placeLabel = make('label', 'sort-label', 'Place filter');
+    const placeSelect = make('select');
+    const allPlacesOption = make('option', '', 'All places');
+    allPlacesOption.value = 'all';
+    allPlacesOption.selected = state.place === 'all';
+    placeSelect.appendChild(allPlacesOption);
+    allPlaces().forEach((place) => {
+      const option = make('option', '', place);
+      option.value = place;
+      option.selected = state.place === place;
+      placeSelect.appendChild(option);
+    });
+    placeSelect.addEventListener('change', () => {
+      state.place = placeSelect.value;
+      renderEntities();
+    });
+    placeLabel.appendChild(placeSelect);
+    panel.appendChild(placeLabel);
+
     const sortLabel = make('label', 'sort-label', 'Sort by');
     const sortSelect = make('select');
     [
       ['category', 'Category order'],
       ['name', 'Name A-Z'],
-      ['town', 'Town / place'],
+      ['town', 'Place A-Z'],
       ['type', 'Type / role']
     ].forEach(([value, label]) => {
       const option = make('option', '', label);
@@ -204,6 +245,7 @@
       body.appendChild(category);
       if (state.mode === 'advanced') {
         const tags = make('div', 'tag-row entity-tags');
+        placeBuckets(entity).forEach((place) => tags.appendChild(make('span', '', place)));
         entityKeywords(entity).slice(0, 8).forEach((keyword) => tags.appendChild(make('span', '', keyword)));
         body.appendChild(tags);
       }
@@ -215,7 +257,7 @@
       const empty = make('article', 'entity-row directory-row');
       empty.appendChild(make('strong', '', 'No matches yet'));
       empty.appendChild(make('span', '', 'Try widening the filters'));
-      empty.appendChild(make('p', '', 'Clear search, category or keyword filters to see more entities.'));
+      empty.appendChild(make('p', '', 'Clear search, category, place or keyword filters to see more entities.'));
       mount.appendChild(empty);
     }
   }

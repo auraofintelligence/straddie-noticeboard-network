@@ -27,12 +27,12 @@ window.NOTICEBOARD_DATA = {
     "boundary": "All entity feed ideas are hypothesised from research notes and require direct approval before public use.",
     "categoryPages": [
       {
-        "slug": "trades-and-services",
-        "label": "Trades, construction and local services",
-        "kind": "Repairs, builds and local capability",
-        "count": 16,
-        "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
-        "href": "categories/trades-and-services.html"
+        "slug": "environment-safety-and-emergency",
+        "label": "Environment, wildlife, safety and emergency",
+        "kind": "Public safety and resilience layer",
+        "count": 8,
+        "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
+        "href": "categories/environment-safety-and-emergency.html"
       },
       {
         "slug": "hospitality-and-retail",
@@ -43,14 +43,6 @@ window.NOTICEBOARD_DATA = {
         "href": "categories/hospitality-and-retail.html"
       },
       {
-        "slug": "tourism-property-and-transport",
-        "label": "Tourism, property, charters and transport",
-        "kind": "Visitor movement and booking layer",
-        "count": 7,
-        "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
-        "href": "categories/tourism-property-and-transport.html"
-      },
-      {
         "slug": "civic-care-and-community",
         "label": "Civic, care and community organisations",
         "kind": "Governance, care, heritage and social support",
@@ -59,12 +51,12 @@ window.NOTICEBOARD_DATA = {
         "href": "categories/civic-care-and-community.html"
       },
       {
-        "slug": "environment-safety-and-emergency",
-        "label": "Environment, wildlife, safety and emergency",
-        "kind": "Public safety and resilience layer",
-        "count": 8,
-        "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
-        "href": "categories/environment-safety-and-emergency.html"
+        "slug": "tourism-property-and-transport",
+        "label": "Tourism, property, charters and transport",
+        "kind": "Visitor movement and booking layer",
+        "count": 7,
+        "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
+        "href": "categories/tourism-property-and-transport.html"
       },
       {
         "slug": "sport-recreation-and-clubs",
@@ -89,6 +81,14 @@ window.NOTICEBOARD_DATA = {
         "count": 44,
         "note": "Likely public data: studio openings, workshops, performances, exhibition windows, artist statements, available works, accessibility notes, gallery hours, collaborative calls and public-safe story prompts.",
         "href": "categories/artists-and-creative-hubs.html"
+      },
+      {
+        "slug": "trades-and-services",
+        "label": "Trades, construction and local services",
+        "kind": "Repairs, builds and local capability",
+        "count": 16,
+        "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
+        "href": "categories/trades-and-services.html"
       },
       {
         "slug": "public-figures-and-legacies",
@@ -151,106 +151,58 @@ window.NOTICEBOARD_DATA = {
   ],
   "entityGroups": [
     {
-      "label": "Trades, construction and local services",
-      "slug": "trades-and-services",
-      "kind": "Repairs, builds and local capability",
-      "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
+      "label": "Environment, wildlife, safety and emergency",
+      "slug": "environment-safety-and-emergency",
+      "kind": "Public safety and resilience layer",
+      "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
       "entities": [
         {
-          "name": "Russell Specht Carpentry",
-          "type": "Carpentry",
+          "name": "Friends of Stradbroke Island",
+          "type": "Environmental advocacy",
           "place": "Minjerribah",
-          "share": "availability blocks, repair tips, materials notices, apprentice call-outs"
+          "share": "campaign updates, working bees, environmental education, policy notices"
         },
         {
-          "name": "Jimmy Holt",
-          "type": "Architectural renovations",
-          "place": "Minjerribah",
-          "share": "renovation availability, build-care tips, local supplier notes"
-        },
-        {
-          "name": "Craig Henderson",
-          "type": "Construction and renovations",
-          "place": "Minjerribah",
-          "share": "project windows, storm-readiness notes, local jobs pipeline"
-        },
-        {
-          "name": "Kevin Long",
-          "type": "Cabinet maker",
-          "place": "Minjerribah",
-          "share": "workshop slots, custom-build lead times, repair or reuse tips"
-        },
-        {
-          "name": "Henderson Construction",
-          "type": "Builder and scaffolding",
-          "place": "Minjerribah",
-          "share": "crew availability, scaffolding windows, safety notices"
-        },
-        {
-          "name": "Glen Campbell",
-          "type": "Builder",
-          "place": "Minjerribah",
-          "share": "build availability, maintenance advice, local procurement requests"
-        },
-        {
-          "name": "Geoff Pettingill",
-          "type": "Builder, earthworks and crane hire",
-          "place": "Minjerribah",
-          "share": "plant availability, access constraints, weather-dependent service notes"
-        },
-        {
-          "name": "Troy Groombridge",
-          "type": "Bricklayer",
-          "place": "Minjerribah",
-          "share": "booking windows, small-job availability, apprentice or helper requests"
-        },
-        {
-          "name": "NSI Property Maintenance",
-          "type": "Handyman and garden upkeep",
-          "place": "Minjerribah",
-          "share": "maintenance rounds, green-waste reminders, storm clean-up capacity"
-        },
-        {
-          "name": "Hutch Welding",
-          "type": "Welding services",
-          "place": "Minjerribah",
-          "share": "repair capacity, marine or trailer safety reminders, booking windows"
-        },
-        {
-          "name": "Straddie Signs",
-          "type": "Local signage",
-          "place": "Minjerribah",
-          "share": "event sign deadlines, sponsor board options, public notice templates"
-        },
-        {
-          "name": "Mazzoni Plant Hire",
-          "type": "Plant hire",
-          "place": "Minjerribah",
-          "share": "machine availability, transport limits, wet-weather constraints"
-        },
-        {
-          "name": "Stradbroke Net Marketing",
-          "type": "Professional services",
+          "name": "Stradbroke Island Management Organisation",
+          "type": "Environmental and social advocacy",
           "place": "Point Lookout",
-          "share": "digital campaign windows, tourism updates, local web support availability"
+          "share": "meeting notices, planning updates, water and aquifer education"
         },
         {
-          "name": "Lanndam Pty Ltd",
-          "type": "Professional services",
-          "place": "Minjerribah",
-          "share": "service availability, project notes, public contact windows"
+          "name": "Wildlife Rescue Minjerribah",
+          "type": "Fauna rescue and care",
+          "place": "Point Lookout",
+          "share": "wildlife alerts, rescue guidance, volunteer needs, hotline reminders"
         },
         {
-          "name": "Locked In Services",
-          "type": "Professional services",
-          "place": "Minjerribah",
-          "share": "service availability, booking notes, community support offers"
+          "name": "Point Lookout Surf Life Saving Club",
+          "type": "Coastal safety and community hub",
+          "place": "Point Lookout",
+          "share": "patrol status, beach safety, events, volunteer training"
         },
         {
-          "name": "Six by Fifty Pty Ltd",
-          "type": "Professional services",
+          "name": "Volunteer Marine Rescue North Stradbroke",
+          "type": "Emergency maritime services",
+          "place": "Dunwich",
+          "share": "marine safety, radio checks, training days, fundraising"
+        },
+        {
+          "name": "Rural Fire Brigade",
+          "type": "Emergency fire services",
+          "place": "Point Lookout / Dunwich / Amity",
+          "share": "fire safety, preparedness days, volunteer call-outs, incident-safe public alerts"
+        },
+        {
+          "name": "Point Lookout Bushcare",
+          "type": "Invasive weed eradication",
+          "place": "Point Lookout",
+          "share": "working bees, weed alerts, volunteer rosters, before-and-after stories"
+        },
+        {
+          "name": "Wildcare Straddie",
+          "type": "Fauna care network",
           "place": "Minjerribah",
-          "share": "service availability, public project updates, workshop invitations"
+          "share": "wildlife education, care needs, rescue-safe public guidance"
         }
       ]
     },
@@ -413,56 +365,6 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Tourism, property, charters and transport",
-      "slug": "tourism-property-and-transport",
-      "kind": "Visitor movement and booking layer",
-      "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
-      "entities": [
-        {
-          "name": "Mal Starkey Seafood and Charters",
-          "type": "Retail and charters",
-          "place": "Minjerribah",
-          "share": "charter availability, weather windows, seafood updates, safety notes"
-        },
-        {
-          "name": "Discover Stradbroke Real Estate",
-          "type": "Real estate",
-          "place": "Minjerribah",
-          "share": "open homes, rental availability, community notices for guests"
-        },
-        {
-          "name": "Dolphin Property Sales",
-          "type": "Real estate",
-          "place": "Minjerribah",
-          "share": "open homes, market updates, buyer information sessions"
-        },
-        {
-          "name": "North Stradbroke Island Surf School",
-          "type": "Recreation and tourism",
-          "place": "Point Lookout",
-          "share": "lesson times, surf conditions, junior sessions, safety flags"
-        },
-        {
-          "name": "Yura Tours",
-          "type": "Cultural tourism",
-          "place": "Minjerribah",
-          "share": "tour availability, booking prompts, cultural respect notes"
-        },
-        {
-          "name": "Goompi Trail",
-          "type": "Cultural tourism",
-          "place": "Dunwich / Goompi",
-          "share": "walk times, heritage learning notes, visitor behaviour prompts"
-        },
-        {
-          "name": "SeaLink South East Queensland",
-          "type": "Transport and logistics",
-          "place": "Cleveland / Dunwich",
-          "share": "ferry status, capacity signals, service changes, disruption notices"
-        }
-      ]
-    },
-    {
       "label": "Civic, care and community organisations",
       "slug": "civic-care-and-community",
       "kind": "Governance, care, heritage and social support",
@@ -549,58 +451,52 @@ window.NOTICEBOARD_DATA = {
       ]
     },
     {
-      "label": "Environment, wildlife, safety and emergency",
-      "slug": "environment-safety-and-emergency",
-      "kind": "Public safety and resilience layer",
-      "note": "Likely public data: safety education, public preparedness days, volunteer training, patrol status, rescue guidance, wildlife care instructions, working bees and incident-safe public updates.",
+      "label": "Tourism, property, charters and transport",
+      "slug": "tourism-property-and-transport",
+      "kind": "Visitor movement and booking layer",
+      "note": "Likely public data: tour times, charter weather windows, ferry status, surf-school sessions, real-estate open homes, visitor guidance, booking links and disruption notices.",
       "entities": [
         {
-          "name": "Friends of Stradbroke Island",
-          "type": "Environmental advocacy",
+          "name": "Mal Starkey Seafood and Charters",
+          "type": "Retail and charters",
           "place": "Minjerribah",
-          "share": "campaign updates, working bees, environmental education, policy notices"
+          "share": "charter availability, weather windows, seafood updates, safety notes"
         },
         {
-          "name": "Stradbroke Island Management Organisation",
-          "type": "Environmental and social advocacy",
-          "place": "Point Lookout",
-          "share": "meeting notices, planning updates, water and aquifer education"
-        },
-        {
-          "name": "Wildlife Rescue Minjerribah",
-          "type": "Fauna rescue and care",
-          "place": "Point Lookout",
-          "share": "wildlife alerts, rescue guidance, volunteer needs, hotline reminders"
-        },
-        {
-          "name": "Point Lookout Surf Life Saving Club",
-          "type": "Coastal safety and community hub",
-          "place": "Point Lookout",
-          "share": "patrol status, beach safety, events, volunteer training"
-        },
-        {
-          "name": "Volunteer Marine Rescue North Stradbroke",
-          "type": "Emergency maritime services",
-          "place": "Dunwich",
-          "share": "marine safety, radio checks, training days, fundraising"
-        },
-        {
-          "name": "Rural Fire Brigade",
-          "type": "Emergency fire services",
-          "place": "Point Lookout / Dunwich / Amity",
-          "share": "fire safety, preparedness days, volunteer call-outs, incident-safe public alerts"
-        },
-        {
-          "name": "Point Lookout Bushcare",
-          "type": "Invasive weed eradication",
-          "place": "Point Lookout",
-          "share": "working bees, weed alerts, volunteer rosters, before-and-after stories"
-        },
-        {
-          "name": "Wildcare Straddie",
-          "type": "Fauna care network",
+          "name": "Discover Stradbroke Real Estate",
+          "type": "Real estate",
           "place": "Minjerribah",
-          "share": "wildlife education, care needs, rescue-safe public guidance"
+          "share": "open homes, rental availability, community notices for guests"
+        },
+        {
+          "name": "Dolphin Property Sales",
+          "type": "Real estate",
+          "place": "Minjerribah",
+          "share": "open homes, market updates, buyer information sessions"
+        },
+        {
+          "name": "North Stradbroke Island Surf School",
+          "type": "Recreation and tourism",
+          "place": "Point Lookout",
+          "share": "lesson times, surf conditions, junior sessions, safety flags"
+        },
+        {
+          "name": "Yura Tours",
+          "type": "Cultural tourism",
+          "place": "Minjerribah",
+          "share": "tour availability, booking prompts, cultural respect notes"
+        },
+        {
+          "name": "Goompi Trail",
+          "type": "Cultural tourism",
+          "place": "Dunwich / Goompi",
+          "share": "walk times, heritage learning notes, visitor behaviour prompts"
+        },
+        {
+          "name": "SeaLink South East Queensland",
+          "type": "Transport and logistics",
+          "place": "Cleveland / Dunwich",
+          "share": "ferry status, capacity signals, service changes, disruption notices"
         }
       ]
     },
@@ -1033,6 +929,110 @@ window.NOTICEBOARD_DATA = {
           "type": "Local art and retail studio",
           "place": "Minjerribah",
           "share": "studio hours, product drops, artist features"
+        }
+      ]
+    },
+    {
+      "label": "Trades, construction and local services",
+      "slug": "trades-and-services",
+      "kind": "Repairs, builds and local capability",
+      "note": "Likely public data: service areas, booking windows, weather delays, job capacity, material constraints, emergency repair availability, apprenticeships and local project updates.",
+      "entities": [
+        {
+          "name": "Russell Specht Carpentry",
+          "type": "Carpentry",
+          "place": "Minjerribah",
+          "share": "availability blocks, repair tips, materials notices, apprentice call-outs"
+        },
+        {
+          "name": "Jimmy Holt",
+          "type": "Architectural renovations",
+          "place": "Minjerribah",
+          "share": "renovation availability, build-care tips, local supplier notes"
+        },
+        {
+          "name": "Craig Henderson",
+          "type": "Construction and renovations",
+          "place": "Minjerribah",
+          "share": "project windows, storm-readiness notes, local jobs pipeline"
+        },
+        {
+          "name": "Kevin Long",
+          "type": "Cabinet maker",
+          "place": "Minjerribah",
+          "share": "workshop slots, custom-build lead times, repair or reuse tips"
+        },
+        {
+          "name": "Henderson Construction",
+          "type": "Builder and scaffolding",
+          "place": "Minjerribah",
+          "share": "crew availability, scaffolding windows, safety notices"
+        },
+        {
+          "name": "Glen Campbell",
+          "type": "Builder",
+          "place": "Minjerribah",
+          "share": "build availability, maintenance advice, local procurement requests"
+        },
+        {
+          "name": "Geoff Pettingill",
+          "type": "Builder, earthworks and crane hire",
+          "place": "Minjerribah",
+          "share": "plant availability, access constraints, weather-dependent service notes"
+        },
+        {
+          "name": "Troy Groombridge",
+          "type": "Bricklayer",
+          "place": "Minjerribah",
+          "share": "booking windows, small-job availability, apprentice or helper requests"
+        },
+        {
+          "name": "NSI Property Maintenance",
+          "type": "Handyman and garden upkeep",
+          "place": "Minjerribah",
+          "share": "maintenance rounds, green-waste reminders, storm clean-up capacity"
+        },
+        {
+          "name": "Hutch Welding",
+          "type": "Welding services",
+          "place": "Minjerribah",
+          "share": "repair capacity, marine or trailer safety reminders, booking windows"
+        },
+        {
+          "name": "Straddie Signs",
+          "type": "Local signage",
+          "place": "Minjerribah",
+          "share": "event sign deadlines, sponsor board options, public notice templates"
+        },
+        {
+          "name": "Mazzoni Plant Hire",
+          "type": "Plant hire",
+          "place": "Minjerribah",
+          "share": "machine availability, transport limits, wet-weather constraints"
+        },
+        {
+          "name": "Stradbroke Net Marketing",
+          "type": "Professional services",
+          "place": "Point Lookout",
+          "share": "digital campaign windows, tourism updates, local web support availability"
+        },
+        {
+          "name": "Lanndam Pty Ltd",
+          "type": "Professional services",
+          "place": "Minjerribah",
+          "share": "service availability, project notes, public contact windows"
+        },
+        {
+          "name": "Locked In Services",
+          "type": "Professional services",
+          "place": "Minjerribah",
+          "share": "service availability, booking notes, community support offers"
+        },
+        {
+          "name": "Six by Fifty Pty Ltd",
+          "type": "Professional services",
+          "place": "Minjerribah",
+          "share": "service availability, public project updates, workshop invitations"
         }
       ]
     },

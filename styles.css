@@ -102,7 +102,7 @@ p { margin: 0; overflow-wrap: anywhere; }
 .compact-link { margin-top: .45rem; }
 .result-count { color: var(--gold); font-family: var(--heading); font-size: .9rem; font-weight: 900; margin-top: 1rem; }
 .sort-panel { align-items: end; background: rgba(6, 16, 18, .55); border: 1px solid rgba(127, 231, 255, .18); border-radius: 8px; display: grid; gap: .85rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.4rem; padding: 1rem; }
-.directory-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.directory-controls { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .mode-toggle { background: rgba(14, 31, 33, .75); border: 1px solid rgba(127, 231, 255, .18); border-radius: 8px; display: grid; gap: .35rem; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: .35rem; }
 .mode-toggle button, .keyword-grid button { background: transparent; border: 1px solid transparent; border-radius: 8px; color: var(--soft); cursor: pointer; font-family: var(--heading); font-weight: 900; min-height: 2.55rem; padding: .55rem .65rem; }
 .mode-toggle button.is-active, .keyword-grid button.is-active { background: rgba(125, 240, 194, .14); border-color: rgba(125, 240, 194, .52); color: var(--aqua); }
