@@ -117,6 +117,11 @@
     return items.map((item) => indent + '- ' + item).join('\n') + '\n';
   }
 
+  function yamlMap(items, indent) {
+    if (!items) return indent + 'facebook: TODO\n' + indent + 'instagram: TODO\n' + indent + 'linkedin: TODO\n';
+    return Object.entries(items).map(([key, value]) => indent + key + ': ' + (value || 'TODO')).join('\n') + '\n';
+  }
+
   function businessProfileMarkdown(entity, group) {
     const profile = entity.profile || {};
     const status = entity.status || profile.public_status || 'needs direct confirmation';
@@ -127,12 +132,22 @@
       'category: ' + group.label + '\n' +
       'place: ' + entity.place + '\n' +
       'status: ' + status + '\n' +
-      'abn: ' + (profile.abn || 'TODO') + '\n' +
-      'registered_entity: ' + (profile.registered_entity || 'TODO') + '\n' +
-      'website: ' + (profile.website || 'TODO') + '\n' +
-      'public_phone: ' + (profile.phone || 'TODO') + '\n' +
-      'public_email: ' + (profile.email || 'TODO') + '\n' +
-      'public_address: ' + (profile.address || entity.place || 'TODO') + '\n' +
+      'source_status: ' + (profile.sources && profile.sources.length ? 'public sources found; still needs owner approval' : 'research hypothesis; needs public source pass') + '\n' +
+      'last_source_check: 2026-05-08\n' +
+      'registered_identity:\n' +
+      '  abn: ' + (profile.abn || 'TODO') + '\n' +
+      '  acn: ' + (profile.acn || 'TODO') + '\n' +
+      '  registered_entity: ' + (profile.registered_entity || 'TODO') + '\n' +
+      'public_contact:\n' +
+      '  phone: ' + (profile.phone || 'TODO') + '\n' +
+      '  email: ' + (profile.email || 'TODO') + '\n' +
+      '  address: ' + (profile.address || entity.place || 'TODO') + '\n' +
+      'online_presence:\n' +
+      '  website: ' + (profile.website || 'TODO') + '\n' +
+      '  google_business_profile: ' + (profile.google_business_profile || 'TODO') + '\n' +
+      '  google_maps: ' + (profile.google_maps || 'TODO') + '\n' +
+      'socials:\n' +
+      yamlMap(profile.socials, '  ') +
       'hours_public_note: ' + (profile.hours_public_note || 'TODO - confirm current public hours before publishing') + '\n' +
       'allowed_notice_types:\n' +
       '  - opening_hours\n' +
@@ -308,6 +323,9 @@
       card.appendChild(make('p', 'card-meta', entity.place));
       if (entity.status) card.appendChild(make('p', 'status-pill', entity.status));
       card.appendChild(make('p', '', 'Supposed public data: ' + entity.share));
+      const entityPage = make('a', 'card-link compact-link', 'Open full entity data page');
+      entityPage.href = '../entities/' + slugify(entity.name) + '.html';
+      card.appendChild(entityPage);
 
       if (state.mode === 'advanced') {
         const tags = make('div', 'tag-row entity-tags');

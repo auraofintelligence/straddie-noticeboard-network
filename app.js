@@ -199,8 +199,8 @@
     const links = document.querySelector('.nav-links');
     const nav = document.querySelector('.nav');
     if (!links || !nav) return;
-    const inCategory = document.body.dataset.category || location.pathname.includes('/categories/');
-    const prefix = inCategory ? '../' : '';
+    const nestedPage = document.body.dataset.category || document.body.dataset.entity || location.pathname.includes('/categories/') || location.pathname.includes('/entities/');
+    const prefix = nestedPage ? '../' : '';
     const items = [
       ['Home', prefix + 'index.html'],
       ['Categories', prefix + 'categories/index.html'],

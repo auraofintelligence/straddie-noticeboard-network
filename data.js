@@ -166,7 +166,31 @@ window.NOTICEBOARD_DATA = {
           "name": "Stradbroke Island Management Organisation",
           "type": "Environmental and social advocacy",
           "place": "Point Lookout",
-          "share": "meeting notices, planning updates, water and aquifer education"
+          "status": "public source found",
+          "share": "meeting notices, planning updates, water and aquifer education",
+          "profile": {
+            "business_profile_id": "stradbroke-island-management-organisation",
+            "public_name": "Stradbroke Island Management Organisation Inc.",
+            "public_status": "public records found / current activity needs confirmation",
+            "address": "PO Box 304, Point Lookout QLD 4183",
+            "abn": "89 682 323 435",
+            "website": "TODO - no current official website confirmed",
+            "google_business_profile": "TODO - not confirmed",
+            "google_maps": "TODO - not confirmed",
+            "socials": {
+              "facebook": "TODO - not confirmed",
+              "instagram": "TODO - not confirmed"
+            },
+            "source_notes": [
+              "Queensland Parliament submission dated 16 Mar 2016 lists Stradbroke Island Management Organisation Inc., PO Box 304 Point Lookout QLD 4183 and ABN 89682323435.",
+              "A 2011 Queensland Parliament PDF links Stradbroke Island Management Organisation with Friends of Stradbroke Island on a North Stradbroke Island protection submission.",
+              "Current public contact, committee, website, Google profile and social presence still need direct confirmation before publishing as active."
+            ],
+            "sources": [
+              "https://documents.parliament.qld.gov.au/com/FAC-D297/NSIPSRMLAB-B7CE/B12-que-8March2016.pdf",
+              "https://www.parliament.qld.gov.au/docs/find.aspx?id=5311T4261"
+            ]
+          }
         },
         {
           "name": "Wildlife Rescue Minjerribah",

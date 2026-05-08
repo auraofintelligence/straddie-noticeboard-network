@@ -27,7 +27,7 @@
   }
 
   function entityCardHref(entity) {
-    return 'categories/' + entity.categorySlug + '.html#entity-' + slugify(entity.name);
+    return 'entities/' + slugify(entity.name) + '.html';
   }
 
   function words(value) {
@@ -251,7 +251,7 @@
       const body = make('div');
       if (entity.status) body.appendChild(make('p', 'status-pill compact-status', entity.status));
       body.appendChild(make('p', '', entity.share));
-      const cardLink = make('a', 'card-link compact-link', 'Open entity card and draft .md files');
+      const cardLink = make('a', 'card-link compact-link', 'Open entity page and draft .md files');
       cardLink.href = entityCardHref(entity);
       body.appendChild(cardLink);
       const category = make('a', 'card-link compact-link', entity.category);
