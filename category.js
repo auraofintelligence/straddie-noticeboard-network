@@ -50,10 +50,10 @@
   function placeBuckets(entity) {
     const place = String(entity.place || '').toLowerCase();
     const buckets = new Set();
-    if (place.includes('amity')) buckets.add('Amity Point');
+    if (place.includes('amity') || place.includes('pulan')) buckets.add('Amity Point / Pulan Pulan');
     if (place.includes('dunwich') || place.includes('goompi')) buckets.add('Dunwich / Goompi');
-    if (place.includes('point lookout') || place.includes('cylinder beach')) buckets.add('Point Lookout');
-    if (place.includes('one mile')) buckets.add('One Mile');
+    if (place.includes('point lookout') || place.includes('mulumba') || place.includes('cylinder beach')) buckets.add('Point Lookout / Mulumba');
+    if (place.includes('one mile') || place.includes('moopi')) buckets.add('One Mile / Moopi Moopi Pa');
     if (place.includes('cleveland')) buckets.add('Cleveland');
     if (place.includes('online')) buckets.add('Online');
     if (place.includes('quandamooka')) buckets.add('Quandamooka Country');
@@ -82,7 +82,8 @@
 
   function openTargetCard() {
     if (!location.hash) return;
-    const target = document.querySelector(location.hash);
+    const targetId = decodeURIComponent(location.hash.slice(1).split('?')[0]);
+    const target = document.getElementById(targetId);
     if (!target) return;
     target.classList.add('is-targeted');
     target.querySelectorAll('details').forEach((details) => {

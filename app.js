@@ -195,6 +195,23 @@
     });
   }
 
+  function wireTopButton() {
+    let button = document.querySelector('[data-top-button]');
+    if (!button) {
+      button = make('button', 'top-button', 'Top');
+      button.type = 'button';
+      button.setAttribute('aria-label', 'Back to top');
+      button.setAttribute('data-top-button', '');
+      document.body.appendChild(button);
+    }
+    const update = () => {
+      button.classList.toggle('is-visible', window.scrollY > 420);
+    };
+    button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+
   function normaliseNav() {
     const links = document.querySelector('.nav-links');
     const nav = document.querySelector('.nav');
@@ -241,4 +258,5 @@
   renderFiles();
   normaliseNav();
   wireNav();
+  wireTopButton();
 })();

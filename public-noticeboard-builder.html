@@ -57,7 +57,16 @@
             </label>
             <label class="conditional-field is-hidden" data-new-category-field>Requested category <input name="requested_category" placeholder="e.g. health and care, schools, local food system"></label>
             <label>Public name <input name="publisher_name" placeholder="Business, artist, club or group"></label>
-            <label>Place or service area <input name="place" placeholder="Point Lookout, Dunwich, Amity, island-wide, online"></label>
+            <label>Place or service area <input name="place" list="placeOptions" placeholder="Point Lookout / Mulumba, Dunwich / Goompi, Amity Point / Pulan Pulan, island-wide"></label>
+            <datalist id="placeOptions">
+              <option value="Minjerribah / island-wide"></option>
+              <option value="Dunwich / Goompi"></option>
+              <option value="Point Lookout / Mulumba"></option>
+              <option value="Amity Point / Pulan Pulan"></option>
+              <option value="One Mile / Moopi Moopi Pa"></option>
+              <option value="Cleveland / mainland"></option>
+              <option value="Online"></option>
+            </datalist>
             <label>Plain-language role <textarea name="public_role" placeholder="What should the public know this entity does, offers, hosts, makes, teaches, repairs, cares for or coordinates?"></textarea></label>
             <label>Public profile.md path or link <input name="public_profile" placeholder="profiles/example/profile.md, website, social link, or leave blank"></label>
             <label>Who approves public notices? <input name="approval_owner" placeholder="Owner, manager, secretary, committee, artist, organiser, media helper"></label>

@@ -5,7 +5,7 @@ window.NOTICEBOARD_DATA = {
     "deck": "A neutral publishing pipeline where each island business, artist, club or service keeps its own look and feel while simple .md files carry public-safe data to screens of different sizes and shapes.",
     "source": "Stradbroke Island Research Project.pdf plus Strange but True ledger, Ready S.E.T. media and disaster kiosk references",
     "status": "prototype",
-    "entityCount": 162,
+    "entityCount": 164,
     "principles": [
       "The network is not one visual style. Each entity can design its own screen skin, art treatment, typography, colours and voice around a shared data shape.",
       "The boring centre is a simple .md file with frontmatter: who posted it, what type of notice it is, where it should appear, when it expires, and which local assets can be used.",
@@ -38,7 +38,7 @@ window.NOTICEBOARD_DATA = {
         "slug": "hospitality-and-retail",
         "label": "Food, drink, shops and island supplies",
         "kind": "Daily essentials and visitor-facing trade",
-        "count": 28,
+        "count": 30,
         "note": "Likely public data: opening hours, stock notes, specials, meal times, cellar or tasting windows, local produce, donation days, responsible-service notes and visitor load signals.",
         "href": "categories/hospitality-and-retail.html"
       },
@@ -398,6 +398,58 @@ window.NOTICEBOARD_DATA = {
             "sources": [
               "https://businessrecycling.com.au/business/7897",
               "https://www.postopeninghours.com/Post%20Office%20Amity%20Point%20LPO%20%28QLD%29/4183/Amity/qXrmHrWi9jdgTO0p"
+            ]
+          }
+        },
+        {
+          "name": "Australia Post Dunwich LPO",
+          "type": "Postal and parcel service",
+          "place": "Dunwich",
+          "status": "public source found",
+          "share": "post office hours, parcel collection notes, PO box reminders, service disruption notices, public holiday closures",
+          "profile": {
+            "business_profile_id": "australia-post-dunwich-lpo",
+            "public_name": "Australia Post Dunwich LPO",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "3 Welsby Street, Dunwich QLD 4183",
+            "phone": "(07) 3409 9010",
+            "website": "https://auspost.com.au/",
+            "google_business_profile": "TODO - not confirmed",
+            "google_maps": "TODO - not confirmed",
+            "hours_public_note": "Public directories list weekday trading and weekend closure; confirm against AusPost before publishing.",
+            "source_notes": [
+              "Opening Hours AU and Localmint list Australia Post Dunwich LPO at 3 Welsby Street with phone (07) 3409 9010.",
+              "Directory hours conflict between 9am-4pm and 9am-5pm, so hours must be checked directly before screen publishing."
+            ],
+            "sources": [
+              "https://www.openinghoursau.com/australia-post-dunwich-qld",
+              "https://www.localmint.com/au/australia-post-dunwich-lpo-hours-836934"
+            ]
+          }
+        },
+        {
+          "name": "Australia Post Point Lookout LPO",
+          "type": "Postal and parcel service",
+          "place": "Point Lookout",
+          "status": "public source found",
+          "share": "post office hours, parcel collection notes, PO box reminders, visitor parcel guidance, public holiday closures",
+          "profile": {
+            "business_profile_id": "australia-post-point-lookout-lpo",
+            "public_name": "Australia Post Point Lookout LPO",
+            "public_status": "open / source check needed before publishing hours",
+            "address": "Centrepoint Shopping Village, Shop 3, 2 Meegera Place, Point Lookout QLD 4183",
+            "phone": "(07) 3409 8210",
+            "website": "https://auspost.com.au/locate/showpop/443389",
+            "google_business_profile": "TODO - not confirmed",
+            "google_maps": "TODO - not confirmed",
+            "hours_public_note": "Public directories list Monday-Friday trading and weekend closure; confirm against AusPost before publishing.",
+            "source_notes": [
+              "Chamber of Commerce and Opening Hours AU list Australia Post Point Lookout LPO at Centrepoint Shopping Village / 2 Meegera Place with phone (07) 3409 8210.",
+              "The Chamber listing includes an AusPost showpop URL for this LPO, but current hours and services still need direct confirmation."
+            ],
+            "sources": [
+              "https://australia.chamberofcommerce.com/business-directory/queensland/point-lookout/mailing-service/4639791-australia-post-point-lookout-lpo",
+              "https://www.openinghoursau.com/australia-post-point-lookout-qld"
             ]
           }
         },
