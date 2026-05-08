@@ -26,7 +26,17 @@
   function renderPipeline() {
     const mount = document.querySelector('[data-pipeline]');
     if (!mount) return;
-    data.pipeline.forEach((step, index) => {
+    const flow = [
+      ...data.pipeline.map((step) => ({
+        name: step.name,
+        detail: step.detail
+      })),
+      ...data.screenProfiles.map((screen) => ({
+        name: screen.name,
+        detail: screen.shape + '. ' + screen.rule
+      }))
+    ];
+    flow.forEach((step, index) => {
       const card = make('article', 'notice-step');
       card.appendChild(make('span', '', String(index + 1).padStart(2, '0')));
       card.appendChild(make('h3', '', step.name));
@@ -222,9 +232,9 @@
       ['Home', prefix + 'index.html'],
       ['Categories', prefix + 'categories/index.html'],
       ['Entities', prefix + 'entities.html'],
-      ['Pipeline', prefix + 'index.html#pipeline'],
-      ['Themes', prefix + 'index.html#themes'],
-      ['Agents', prefix + 'index.html#agents'],
+      ['Pipeline', prefix + 'pipeline.html'],
+      ['Themes', prefix + 'themes.html'],
+      ['Agents', prefix + 'agents.html'],
       ['Builder', prefix + 'public-noticeboard-builder.html'],
       ['Assets', 'https://auraofintelligence.github.io/straddie-content-assets-kit/'],
       ['public_noticeboard.md', prefix + 'public-noticeboard.html']

@@ -111,7 +111,7 @@ window.NOTICEBOARD_DATA = {
     },
     {
       "name": "Adapter builds variants",
-      "detail": "The renderer turns the same data into different shapes: portrait kiosk, 16:9 TV, square tile, narrow ticker, mobile story or offline emergency card."
+      "detail": "The renderer turns the same data into different shapes: portrait kiosk, wall screen, outdoor LED sign, square tile, narrow ticker, mobile story, ticket tape or offline emergency card."
     },
     {
       "name": "Device caches locally",
@@ -124,9 +124,9 @@ window.NOTICEBOARD_DATA = {
   ],
   "screenProfiles": [
     {
-      "name": "Wall installation",
-      "shape": "16:9, 21:9 or custom timber frame",
-      "rule": "High visual character, low interaction, big type, rotating tiles and entity-branded art skins."
+      "name": "Wall installation and outdoor LED sign",
+      "shape": "16:9, 21:9, custom timber frame or outdoor LED panel",
+      "rule": "High visual character, low interaction, big type, rotating tiles, outdoor-safe LED summaries and entity-branded art skins."
     },
     {
       "name": "Shop counter tablet",
@@ -145,8 +145,8 @@ window.NOTICEBOARD_DATA = {
     },
     {
       "name": "Offline fallback",
-      "shape": "Low power text-first display",
-      "rule": "No fancy assets required: title, location, expiry, source, verified status and action."
+      "shape": "Low-power text display, ticker or ticket-tape printout",
+      "rule": "No fancy assets required: title, location, expiry, source, verified status and action, with ticket-tape style summaries for low-power or printed fallback."
     }
   ],
   "entityGroups": [

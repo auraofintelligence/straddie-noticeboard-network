@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ready S.E.T. media agent roles for drafting, checking and adapting Straddie Noticeboard Network public notices.">
+    <title>Agents | Straddie Noticeboard Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-links"></div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="category-hero">
+        <p class="eyebrow">Agent pipelines</p>
+        <h1>Help with files, not a tech burden.</h1>
+        <p class="hero-lede">Ready S.E.T. media agents can help entities draft, check, approve and render notices without forcing every local business or artist to become technical.</p>
+      </section>
+      <section class="section" aria-labelledby="agents-title">
+        <div class="section-heading">
+          <p class="eyebrow">Support roles</p>
+          <h2 id="agents-title">Draft, check, approve, render.</h2>
+          <p>These are practical roles in the publishing workflow. They do not replace consent, local knowledge or human approval.</p>
+        </div>
+        <div class="agent-grid" data-agent-pipelines></div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-copy"><p>Straddie Noticeboard Network is a standalone public noticeboard pipeline prototype.</p><p class="footer-note">Real feeds need consent, source checks, expiry dates, cultural care and privacy review before publication.</p></div></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

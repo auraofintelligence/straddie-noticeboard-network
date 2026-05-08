@@ -20,9 +20,9 @@
           <a href="index.html">Home</a>
           <a href="categories/index.html">Categories</a>
           <a href="entities.html">Entities</a>
-          <a href="#pipeline">Pipeline</a>
-          <a href="#themes">Themes</a>
-          <a href="#agents">Agents</a>
+          <a href="pipeline.html">Pipeline</a>
+          <a href="themes.html">Themes</a>
+          <a href="agents.html">Agents</a>
           <a href="public-noticeboard-builder.html">Builder</a>
           <a href="https://auraofintelligence.github.io/straddie-content-assets-kit/">Assets</a>
           <a href="public-noticeboard.html">public_noticeboard.md</a>
@@ -41,9 +41,7 @@
               <a class="button primary" href="categories/index.html">Open categories</a>
               <a class="button secondary" href="entities.html">Browse all entities</a>
               <a class="button secondary" href="public-noticeboard-builder.html">Build public_noticeboard.md</a>
-              <a class="button secondary" href="public-noticeboard.html">Open public_noticeboard.md</a>
-              <a class="button secondary" href="https://auraofintelligence.github.io/straddie-content-assets-kit/">Build asset files</a>
-              <a class="button secondary" href="noticeboard/README.md">Open pipeline files</a>
+              <a class="button secondary" href="pipeline.html">Understand the pipeline</a>
             </div>
           </div>
           <figure class="feature-image hero-image">
@@ -51,70 +49,50 @@
           </figure>
         </div>
       </section>
-      <section class="section" id="pipeline" aria-labelledby="pipeline-title">
+      <section class="section" aria-labelledby="home-paths-title">
         <div class="section-heading">
-          <p class="eyebrow">Pipeline</p>
-          <h2 id="pipeline-title">Boring files, flexible screens.</h2>
-          <p>The data layer stays simple so each business, artist, club or service can build its own look around it.</p>
+          <p class="eyebrow">Main paths</p>
+          <h2 id="home-paths-title">Start broad, then choose the next step.</h2>
+          <p>The home page is only the island-level doorway. The deeper parts have their own pages so the menu behaves like a map, not a set of jumps on one long page.</p>
         </div>
-        <figure class="feature-image pipeline-image">
-          <img src="assets/noticeboard-network-fields.png" alt="Illustrated Straddie Noticeboard Network map showing sources, markdown fields, devices and public outcomes.">
-        </figure>
-        <div class="notice-pipeline" data-pipeline></div>
-      </section>
-      <section class="section wide visual-band" id="screens" aria-labelledby="screens-title">
-        <div class="section-heading">
-          <p class="eyebrow">Screen adapters</p>
-          <h2 id="screens-title">The same notice fits different shapes.</h2>
+        <div class="category-grid">
+          <a class="category-card category-card-link" href="categories/index.html">
+            <p class="eyebrow">Public roles</p>
+            <h3>Categories</h3>
+            <p>Start with safety, everyday services, community care, transport, sport, events, creative work, trades and public legacy references.</p>
+            <span class="card-link">Open categories</span>
+          </a>
+          <a class="category-card category-card-link" href="entities.html">
+            <p class="eyebrow">Directory</p>
+            <h3>Entities</h3>
+            <p>Browse every researched business, artist, group, service and reference, then drill down to individual draft data pages.</p>
+            <span class="card-link">Browse entities</span>
+          </a>
+          <a class="category-card category-card-link" href="public-noticeboard-builder.html">
+            <p class="eyebrow">Plain form</p>
+            <h3>Builder</h3>
+            <p>Create a starter public_noticeboard.md file after profile.md and aura.md, with basic, advanced and technical sections.</p>
+            <span class="card-link">Open builder</span>
+          </a>
+          <a class="category-card category-card-link" href="pipeline.html">
+            <p class="eyebrow">How it moves</p>
+            <h3>Pipeline</h3>
+            <p>See how one markdown notice becomes wall-screen, kiosk, tablet, phone and low-power fallback display content.</p>
+            <span class="card-link">See pipeline</span>
+          </a>
+          <a class="category-card category-card-link" href="themes.html">
+            <p class="eyebrow">Calendar prompts</p>
+            <h3>Themes</h3>
+            <p>Use local seasons, island events and global days as optional prompts, without forcing every entity into the same rhythm.</p>
+            <span class="card-link">See themes</span>
+          </a>
+          <a class="category-card category-card-link" href="agents.html">
+            <p class="eyebrow">Support roles</p>
+            <h3>Agents</h3>
+            <p>Map the Ready S.E.T. media helpers that draft, check, approve and render public-safe notices.</p>
+            <span class="card-link">See agents</span>
+          </a>
         </div>
-        <div class="screen-grid" data-screens></div>
-      </section>
-      <section class="section" id="themes" aria-labelledby="themes-title">
-        <div class="section-heading">
-          <p class="eyebrow">Theme calendar</p>
-          <h2 id="themes-title">Scheduled meaning, not random content.</h2>
-          <p>Local and global themes can become opt-in publishing prompts. Each entity can tick what fits its values each month or quarter, ignore what does not fit, and add its own island-specific themes.</p>
-        </div>
-        <div class="theme-layout">
-          <div>
-            <h3>Global prompts</h3>
-            <div class="theme-grid" data-theme-calendar></div>
-          </div>
-          <div>
-            <h3>Local prompts</h3>
-            <div class="theme-grid compact" data-local-themes></div>
-          </div>
-        </div>
-      </section>
-      <section class="section" id="agents" aria-labelledby="agents-title">
-        <div class="section-heading">
-          <p class="eyebrow">Agent pipelines</p>
-          <h2 id="agents-title">Ready S.E.T. media agents turn updates into safe public files.</h2>
-          <p>The co-op media layer can help entities draft, check, approve and render notices without forcing every local business or artist to become technical.</p>
-        </div>
-        <div class="agent-grid" data-agent-pipelines></div>
-      </section>
-      <section class="section wide visual-band" id="devices" aria-labelledby="devices-title">
-        <div class="section-heading">
-          <p class="eyebrow">Device location IDs</p>
-          <h2 id="devices-title">Every screen needs a name, place and fallback mode.</h2>
-          <p>The markdown only becomes useful when devices around the island know where they are, what shape they are, what assets they have locally, and what to do offline.</p>
-        </div>
-        <div class="device-grid" data-device-locations></div>
-      </section>
-      <section class="section wide visual-band" id="markdown" aria-labelledby="markdown-title">
-        <div class="section-heading">
-          <p class="eyebrow">Markdown contract</p>
-          <h2 id="markdown-title">Frontmatter is the shared language.</h2>
-        </div>
-        <div class="md-examples" data-markdown-examples></div>
-      </section>
-      <section class="section" id="feeds" aria-labelledby="feeds-title">
-        <div class="section-heading">
-          <p class="eyebrow">Repo files</p>
-          <h2 id="feeds-title">Sample feeds and device manifests.</h2>
-        </div>
-        <div class="file-grid" data-file-grid></div>
       </section>
     </main>
     <footer class="site-footer">

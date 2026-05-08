@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Local and global calendar prompts for Straddie Noticeboard Network publishers.">
+    <title>Themes | Straddie Noticeboard Network</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Nunito+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand-mark" href="index.html" aria-label="Straddie Noticeboard Network home"><span>Straddie</span><span>Noticeboard</span></a>
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+        <div class="nav-links"></div>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="category-hero">
+        <p class="eyebrow">Theme calendar</p>
+        <h1>Scheduled meaning, not random content.</h1>
+        <p class="hero-lede">Local and global themes can become opt-in publishing prompts. Each entity can tick what fits its values, ignore what does not fit, and add its own island-specific themes.</p>
+      </section>
+      <section class="section" aria-labelledby="themes-title">
+        <div class="section-heading">
+          <p class="eyebrow">Opt-in prompts</p>
+          <h2 id="themes-title">Use the calendar when it helps.</h2>
+          <p>The point is not to make everyone post about everything. It is to help local publishers notice useful timing: seasons, school holidays, safety weeks, public days, arts activity, fundraising and community rhythms.</p>
+        </div>
+        <div class="theme-layout">
+          <div>
+            <h3>Global prompts</h3>
+            <div class="theme-grid" data-theme-calendar></div>
+          </div>
+          <div>
+            <h3>Local prompts</h3>
+            <div class="theme-grid compact" data-local-themes></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-copy"><p>Straddie Noticeboard Network is a standalone public noticeboard pipeline prototype.</p><p class="footer-note">Real feeds need consent, source checks, expiry dates, cultural care and privacy review before publication.</p></div></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
