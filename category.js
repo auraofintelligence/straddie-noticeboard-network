@@ -80,6 +80,19 @@
       .slice(0, 36);
   }
 
+  function openTargetCard() {
+    if (!location.hash) return;
+    const target = document.querySelector(location.hash);
+    if (!target) return;
+    target.classList.add('is-targeted');
+    target.querySelectorAll('details').forEach((details) => {
+      details.open = true;
+    });
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: 'start' });
+    });
+  }
+
   function exampleMarkdown(entity, group) {
     const id = slugify(entity.name) + '-notice-draft';
     return '---\n' +
@@ -289,6 +302,7 @@
 
     entities.forEach((entity) => {
       const card = make('article', 'entity-card');
+      card.id = 'entity-' + slugify(entity.name);
       card.appendChild(make('p', 'eyebrow', entity.type));
       card.appendChild(make('h3', '', entity.name));
       card.appendChild(make('p', 'card-meta', entity.place));
@@ -323,6 +337,8 @@
       empty.appendChild(make('p', '', 'Clear the search, place or keyword filters to widen the view.'));
       mount.appendChild(empty);
     }
+
+    openTargetCard();
   }
 
   function renderFallback() {

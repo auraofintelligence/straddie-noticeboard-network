@@ -22,6 +22,14 @@
     return node;
   }
 
+  function slugify(value) {
+    return value.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }
+
+  function entityCardHref(entity) {
+    return 'categories/' + entity.categorySlug + '.html#entity-' + slugify(entity.name);
+  }
+
   function words(value) {
     return String(value || '')
       .toLowerCase()
@@ -236,11 +244,16 @@
 
     list.forEach((entity) => {
       const row = make('article', 'entity-row directory-row');
-      row.appendChild(make('strong', '', entity.name));
+      const nameLink = make('a', 'entity-name-link', entity.name);
+      nameLink.href = entityCardHref(entity);
+      row.appendChild(nameLink);
       row.appendChild(make('span', '', [entity.place, entity.type].filter(Boolean).join(' | ')));
       const body = make('div');
       if (entity.status) body.appendChild(make('p', 'status-pill compact-status', entity.status));
       body.appendChild(make('p', '', entity.share));
+      const cardLink = make('a', 'card-link compact-link', 'Open entity card and draft .md files');
+      cardLink.href = entityCardHref(entity);
+      body.appendChild(cardLink);
       const category = make('a', 'card-link compact-link', entity.category);
       category.href = 'categories/' + entity.categorySlug + '.html';
       body.appendChild(category);
