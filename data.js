@@ -111,7 +111,7 @@ window.NOTICEBOARD_DATA = {
     },
     {
       "name": "Adapter builds variants",
-      "detail": "The renderer turns the same data into different shapes: portrait kiosk, wall screen, outdoor LED sign, square tile, narrow ticker, mobile story, ticket tape or offline emergency card."
+      "detail": "The renderer turns the same data into different shapes: portrait kiosk, wall screen, outdoor LED sign, square tile, mobile story, bottom-screen ticker-tape strip, SMS-ready short text or offline emergency card."
     },
     {
       "name": "Device caches locally",
@@ -145,8 +145,8 @@ window.NOTICEBOARD_DATA = {
     },
     {
       "name": "Offline fallback",
-      "shape": "Low-power text display, ticker or ticket-tape printout",
-      "rule": "No fancy assets required: title, location, expiry, source, verified status and action, with ticket-tape style summaries for low-power or printed fallback."
+      "shape": "Low-power sign, ticker-tape strip, SMS or text-first display",
+      "rule": "No fancy assets required: title, location, expiry, source, verified status and action, written once as a short message that can run along the bottom of a screen, fit a low-power sign or send as SMS."
     }
   ],
   "entityGroups": [
@@ -1685,7 +1685,8 @@ window.NOTICEBOARD_DATA = {
         "wall tile",
         "portrait kiosk card",
         "phone story",
-        "text-only fallback"
+        "ticker-tape strip",
+        "SMS-ready fallback"
       ]
     }
   ],
